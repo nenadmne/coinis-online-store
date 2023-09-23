@@ -14,14 +14,14 @@ import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import "./NavBar.css";
-import logo from "../assets/logo.png";
+import logo from "../../../assets/logo.png";
 
 const pages = ["Products", "About us", "Support"];
 const settings = ["Profile", "Logout"];
 
-function NavBar({ toggleSidebar }) {
+function NavBar({ toggleSideBar, footerRef }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);    
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,7 +34,12 @@ function NavBar({ toggleSidebar }) {
     const targetPage = page.target.innerText;
     setAnchorElNav(null);
     if (targetPage === "PRODUCTS") {
-      toggleSidebar();
+      toggleSideBar();
+    }
+    if (targetPage === "ABOUT US") {
+      if (footerRef.current) {
+        footerRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -45,7 +50,7 @@ function NavBar({ toggleSidebar }) {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#333333", padding: "0"}}>
+    <AppBar position="sticky" display="flex" sx={{ backgroundColor: "var(--secondary)", padding: "0"}}>
       <Container maxWidth="100%" sx={{ padding: "0px !important" }}>
         <Toolbar disableGutters>
           <Typography
@@ -63,7 +68,7 @@ function NavBar({ toggleSidebar }) {
               color: "inherit",
               padding: "0.75rem 2rem",
               textDecoration: "none",
-              backgroundColor: "#1E5E00",
+              backgroundColor: "var(--primary)",
             }}
           >
             SILKROAD

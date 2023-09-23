@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  --white: #fff;
+  --black: #1e1e1e;
+  --primary: #1E5E00;
+  --secondary: #333333;
+  --grey: #d3d3d3;
+  --green-darkish: #308500;
+  --green-light: rgb(40, 167, 69);
+  --red: darkred;
+}
+
 body,
 html,
 #root {

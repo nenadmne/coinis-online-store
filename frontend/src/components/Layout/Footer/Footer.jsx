@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import Input from "../UI/input";
+import Input from "../../../UI/input";
 import "./Footer.css";
-import Textarea from "../UI/Textarea";
+import Textarea from "../../../UI/Textarea";
+import Button from "../../../UI/Button";
 
-const Footer = () => {
+const Footer = ({footerRef}) => {
   const [readMore, setReadMore] = useState(false);
   const reasonsRef = useRef(null)
 
@@ -12,14 +13,13 @@ const Footer = () => {
   };
 
   useEffect(() => {
-    // Check if the section should be scrolled into view when readMore changes
     if (readMore && reasonsRef.current) {
       reasonsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [readMore]);
 
   return (
-    <section className="footer-wrapper">
+    <section ref={footerRef} className="footer-wrapper">
       <div className="about-us">
         <div className="footer-description">
           <h1>About Us - SilkRoad</h1>
@@ -90,8 +90,8 @@ const Footer = () => {
             className="footer-input"
           />
           <div className="button-div">
-            <button className="btn btn-block btn-danger"> Cancel </button>
-            <button className="btn btn-block btn-success"> Submit </button>
+            <Button className="btn btn-block btn-danger" name="cancel" />
+            <Button className="btn btn-block btn-success" name="submit" type="submit" />
           </div>
         </form>
       </div>

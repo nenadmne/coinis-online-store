@@ -1,8 +1,6 @@
 const Input = (props) => {
   const {
     label,
-    type,
-    name,
     value,
     placeholder,
     onChange,
@@ -16,13 +14,13 @@ const Input = (props) => {
 
   return (
     <div className={props.className}>
-      <label>
-        {label} {props.sup && <sup>*</sup>}
-      </label>
+      {label && (
+        <label>
+          {label} {props.sup && <sup>*</sup>}
+        </label>
+      )}
       <input
         className={inputClasses || "form-control"}
-        type={type}
-        name={name}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

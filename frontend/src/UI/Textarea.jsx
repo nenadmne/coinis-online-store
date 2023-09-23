@@ -4,7 +4,6 @@ const Textarea = (props) => {
   const {
     label,
     type,
-    name,
     value,
     placeholder,
     textareaClasses,
@@ -21,7 +20,6 @@ const Textarea = (props) => {
       <textarea
         className={textareaClasses || "form-control"}
         type={type}
-        name={name}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

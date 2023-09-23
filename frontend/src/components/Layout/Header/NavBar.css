@@ -18,10 +18,10 @@
   justify-self: center;
   align-self: center;
   font-size: 2.25rem;
-  color: black;
+  color: var(--black);
   padding: 0.5rem;
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .avatar {
@@ -31,7 +31,7 @@
 
 .logo-div img {
   width: 2rem;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 0.25rem;
   margin-left: 1rem;
 }
@@ -47,8 +47,8 @@
 }
 
 .logo-div:hover {
-  background-color: #308500;
-  color: white;
+  background-color: var(--green-darkish);
+  color: var(--white);
 }
 
 .badge span {
@@ -57,7 +57,7 @@
   height: 1.25rem;
   font-size: 0.7rem;
   padding: 0.25rem;
-  background-color: darkred;
+  background-color: var(--red);
   font-weight: 500;
 }
 
@@ -85,7 +85,7 @@
     height: 1.5rem;
     font-size: 1rem;
     padding: 0.25rem;
-    background-color: darkred;
+    background-color: var(--red);
     font-weight: 700;
   }
 

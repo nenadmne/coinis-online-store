@@ -1,10 +1,11 @@
 .footer-wrapper {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(225deg,  #333333, #308500);
-  color: #D3D3D3;
+  background: linear-gradient(225deg, var(--secondary), var(--primary));
+  color: var(--grey);
   padding: 2rem;
   margin-top: 100%;
+  width: 100%;
 }
 
 .footer-wrapper h1 {
@@ -20,20 +21,20 @@
   padding: 2rem;
 }
 
-.footer-description{
+.footer-description {
   position: relative;
 }
 
 .footer-description::before {
-  content: ''; 
-  background-image: url('../assets/logo.png');
+  content: "";
+  background-image: url("../../../assets/logo.png");
   position: absolute;
   bottom: 0;
   left: 0;
-  transform: translateX(60%); 
+  transform: translateX(60%);
   width: 70%;
-  height: 100%; 
-  background-size: contain; 
+  height: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
   opacity: 0.1;
 }
@@ -80,7 +81,10 @@
 }
 
 .button-div button {
-  width: 5rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  width: 6rem;
   margin: 0 !important;
 }
 

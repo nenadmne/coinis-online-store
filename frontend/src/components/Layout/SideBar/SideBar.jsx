@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import CategoryIcon from "@mui/icons-material/Category";
 import "./SideBar.css";
 
-export default function SideBar({ sidebarOpened, toggleSidebar }) {
+export default function SideBar({ sideBarOpened, toggleSideBar }) {
   const [state, setState] = React.useState({
     left: false,
   });
@@ -21,16 +21,16 @@ export default function SideBar({ sidebarOpened, toggleSidebar }) {
     ) {
       return;
     }
-    toggleSidebar();
+    toggleSideBar();
   };
 
   React.useEffect(() => {
-    if (sidebarOpened === true) {
+    if (sideBarOpened === true) {
       setState({ ...state, ["left"]: true });
     } else {
       setState({ ...state, ["left"]: false });
     }
-  }, [sidebarOpened]);
+  }, [sideBarOpened]);
 
   const list = (anchor) => (
     <Box
