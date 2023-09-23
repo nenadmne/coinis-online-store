@@ -9,17 +9,17 @@ function valuetext(value) {
 
 export default function FilterSlider({ stepValue, maxValue }) {
   const [value, setValue] = React.useState([0, maxValue]);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const text = `Filter by Price Range `;
 
   return (
     <div className="filter-by-value">
       <p>
-        Filter by Price Range
+        {text}
         <strong>
-          ({value[0]} - {maxValue})
+          $({value[0]} - {maxValue})
         </strong>
       </p>
       <Box sx={{ width: 300 }}>

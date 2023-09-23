@@ -25,10 +25,6 @@
   height: fit-content;
 }
 
-.section-wrapper button:hover{
-  background-color: var(--primary);
-}
-
 .section-wrapper input:focus {
   border: 1px solid var(--green-light);
 }

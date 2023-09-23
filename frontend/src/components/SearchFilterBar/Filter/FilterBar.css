@@ -4,18 +4,26 @@
   margin: 0 2rem;
   display: flex;
   flex-direction: row;
+  gap: 3rem;
+  width: fit-content;
+}
+
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  width: fit-content;
 }
 
 .slide-down {
-  animation: roll-down 1s ease;
+  animation: roll-down 0.3s ease;
   visibility: visible;
   overflow: visible;
   max-height: 100%;
 }
 
 .slide-up {
-  animation: roll-up 0.5s ease;
+  animation: roll-up 0.3s ease;
   visibility: hidden;
   overflow: hidden;
   padding: 0;
@@ -23,35 +31,46 @@
   font-size: 1rem;
 }
 
+.custom-values {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-values p {
+  margin: 0;
+}
+
+.custom-values input {
+  width: 5rem;
+}
+
 @keyframes roll-up {
   0% {
     visibility: visible;
-    overflow: visible;
+    overflow: hidden;
     padding: 1rem 2rem;
-    max-height: 100%;
   }
 
   100% {
     visibility: hidden;
     overflow: hidden;
-    padding: 0.5rem 2rem;
-    max-height: 0;
+    padding: 0rem 2rem;
   }
 }
 
 @keyframes roll-down {
   0% {
-    max-height: 0;
     visibility: hidden;
     overflow: hidden;
-    opacity: 0;
+    padding: 0rem 2rem;
   }
 
   100% {
-    max-height: 100%;
     visibility: visible;
     overflow: visible;
-    opacity: 1;
+    padding: 1rem 2rem;
   }
 }
 
@@ -69,11 +88,4 @@
 .MuiBox-root {
   display: flex;
   align-items: center;
-}
-
-.slider-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: fit-content;
 }

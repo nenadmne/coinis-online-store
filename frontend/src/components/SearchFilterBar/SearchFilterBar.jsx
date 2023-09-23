@@ -1,7 +1,7 @@
 import Input from "../../UI/input";
 import Button from "../../UI/Button";
 import "./SearchFilterBar.css";
-import FilterBar from "./FilterBar";
+import FilterBar from "./Filter/FilterBar";
 import { useState } from "react";
 
 function SearchFilterBar() {
