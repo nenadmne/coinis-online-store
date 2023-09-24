@@ -1,0 +1,55 @@
+.opened {
+  animation: pop-in 1s ease-in;
+  opacity: 1;
+  max-height: 100%;
+  visibility: visible;
+  overflow: visible;
+}
+
+.closed {
+  animation: pop-out 1s ease-out;
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+    max-height: 100%;
+    visibility: visible;
+    overflow: visible;
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    opacity: 1;
+    max-height: 100%;
+    visibility: visible;
+    overflow: visible;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}

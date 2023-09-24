@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ConditionalFilterBar from "./ConditionalFilter/ConditionalFilterBar";
+import ConditionalFilterBar from "./ConditionalFilterBar/ConditionalFilterBar";
 import SearchAndFilter from "./SearchAndFilter/SearchAndFilter";
 import "./SearchFilterBar.css";
 

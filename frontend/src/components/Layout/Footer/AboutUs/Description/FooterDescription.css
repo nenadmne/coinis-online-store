@@ -1,0 +1,25 @@
+.footer-description {
+  position: relative;
+}
+
+.footer-description::before {
+  content: "";
+  background-image: url("../../../../../assets/logo.png");
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(60%);
+  width: 70%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
+
+.btn-block.btn-dark {
+  width: 10rem;
+  font-size: 1rem;
+  padding-top: 0.25rem;
+  font-style: italic;
+  margin-top: 2rem;
+}
