@@ -1,0 +1,14 @@
+.custom-values {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-values p {
+  margin: 0;
+}
+
+.custom-values input {
+  width: 5rem;
+}

@@ -1,5 +1,5 @@
-import Input from "../../../UI/input";
-import Button from "../../../UI/Button";
+import Input from "../../../../UI/input";
+import Button from "../../../../UI/Button";
 import "./SearchAndFilter.css";
 
 function SearchAndFilter({ openHandler }) {

@@ -2,14 +2,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout/Layout";
 import Login from "./components/Login/Login";
-import SearchFilterBar from "./components/SearchFilterBar/SearchFilterBar";
+import Homepage from "./components/Homepage/HomePage";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
-      children: [{ path: "/", element: <SearchFilterBar /> }],
+      children: [{ path: "/", element: <Homepage /> }],
     },
     {
       path: "/login",
