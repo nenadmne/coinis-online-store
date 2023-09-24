@@ -2,29 +2,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.search-filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem 2rem 1rem 2rem;
-}
-
-.section-wrapper button {
-  width: 6rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.section-wrapper input {
-  font-size: 1rem;
-  padding: 0.5rem;
-  height: fit-content;
-}
-
-.section-wrapper input:focus {
-  border: 1px solid var(--green-light);
-}

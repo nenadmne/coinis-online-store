@@ -1,6 +1,6 @@
 import "./SortingOptions.css";
 import SouthIcon from "@mui/icons-material/South";
-import Button from "../../../UI/Button";
+import Button from "../../../../UI/Button";
 import { useState } from "react";
 
 const SortingOptions = () => {

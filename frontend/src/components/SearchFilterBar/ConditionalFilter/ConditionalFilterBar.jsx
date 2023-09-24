@@ -1,9 +1,9 @@
-import "./FilterBar.css";
-import FilterSlider from "../Slider/FilterSlider";
+import FilterSlider from "./Slider/FilterSlider";
+import SortingOptions from "./Sort/SortingOptions";
 import Input from "../../../UI/input";
-import SortingOptions from "../Sort/SortingOptions";
+import "./ConditionalFilterBar.css";
 
-function FilterBar({ open }) {
+function ConditionalFilterBar({ open }) {
 
   const filterBarClass = open ? "filter-wrapper slide-down" : "filter-wrapper slide-up";
 
@@ -23,4 +23,4 @@ function FilterBar({ open }) {
   );
 }
 
-export default FilterBar;
+export default ConditionalFilterBar;
