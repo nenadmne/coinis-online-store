@@ -1,11 +1,12 @@
 .filter-wrapper {
   padding: 1rem 2rem;
   border: 1px solid var(--green-light);
-  margin: 0 2rem;
   display: flex;
   flex-direction: row;
   gap: 3rem;
   width: fit-content;
+  width: 100%;
+  max-width: 1420px;
 }
 
 .slider-wrapper {

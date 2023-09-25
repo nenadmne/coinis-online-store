@@ -28,4 +28,5 @@ html,
 main {
   width: 100%;
   max-width: 1420px;
+  padding: 2rem;
 }

@@ -3,7 +3,8 @@
   flex-direction: row;
   align-items: center;
   gap: 2rem;
-  padding: 2rem 2rem 1rem 2rem;
+  width: 100%;
+  padding-bottom: 2rem;
 }
 
 .search-filter button {

@@ -1,0 +1,19 @@
+.most-popular {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 30rem;
+  padding: 2rem;
+  border: 1px solid var(--green-light);
+}
+
+.custom-select,
+.custom-select:focus {
+  border: 1px solid var(--grey);
+  cursor: pointer;
+}
+
+.custom-select option {
+  cursor: pointer;
+}

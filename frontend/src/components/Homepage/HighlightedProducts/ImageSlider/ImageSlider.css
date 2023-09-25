@@ -5,6 +5,8 @@
   align-items: center;
   width: 70%;
   max-width: 800px;
+  padding: 2rem;
+  border: 1px solid var(--green-light);
 }
 
 .displayed-products {
@@ -15,5 +17,5 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 2rem;
+  padding-bottom: 2rem;
 }

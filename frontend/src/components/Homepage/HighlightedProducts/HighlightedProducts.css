@@ -1,0 +1,5 @@
+.highlighted-products {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
