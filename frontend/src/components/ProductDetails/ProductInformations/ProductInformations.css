@@ -1,0 +1,102 @@
+.product-info {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 2rem;
+  width: 40%;
+  margin: 0;
+  list-style: none;
+}
+
+.product-info p {
+  margin: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.description {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--black);
+  letter-spacing: -0.5px;
+  background-color: var(--pale);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.category {
+  display: flex;
+  justify-content: right;
+  padding: 0.5rem 1rem;
+}
+
+.brand {
+  display: flex;
+  justify-content: right;
+  padding: 0rem 1rem;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.category a,
+.brand span {
+  text-transform: uppercase;
+  color: var(--secondary);
+  font-weight: 700;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+.stock {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.price svg {
+  font-size: 3.5rem;
+  width: fit-content !important;
+}
+
+.price span {
+  font-size: 1.25rem;
+}
+
+.prod-old-price {
+  color: var(--black);
+  padding: 0.25rem;
+  line-height: 1.25rem;
+  text-decoration: line-through;
+  text-decoration-color: var(--secondary);
+  text-decoration-thickness: 1px;
+  text-decoration-style: double;
+}
+
+.prod-price {
+  background-color: var(--green-light);
+  color: var(--white);
+  padding: 0.25rem;
+  line-height: 1.25rem;
+  width: fit-content;
+}
+
+.prod-discount {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 0.25rem;
+  line-height: 1.25rem;
+  width: fit-content;
+}

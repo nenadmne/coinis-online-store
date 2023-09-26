@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import Button from "../../../../../UI/Button";
 import Card from "../../../../../UI/Card";
 import "./ProductListItem.css";
 
-const ProductListItem = ({item}) => {
+const ProductListItem = ({ item }) => {
   return (
     <Card className="list-item-wrapper">
       <img src={item.thumbnail} />
@@ -11,10 +12,12 @@ const ProductListItem = ({item}) => {
         <span>$</span>
         <strong>{item.price}</strong>
       </p>
-      <Button
-        name="Specifications"
-        className="btn btn-block btn-outline-dark btn-xs"
-      />
+      <Link to={`/details/${item.id}`}>
+        <Button
+          name="Specifications"
+          className="btn btn-block btn-outline-dark btn-xs"
+        />
+      </Link>
     </Card>
   );
 };

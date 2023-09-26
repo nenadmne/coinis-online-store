@@ -1,0 +1,26 @@
+.small-image-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small-image-box img {
+  width: 16%;
+  height: 8rem;
+  object-fit: contain;
+  box-shadow: none;
+  border-radius: 0.2rem;
+}
+
+.small-image-box img:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+.current-image {
+  border: 1px solid var(--secondary);
+  scale: 1.2;
+  box-shadow: 0.2rem 0.2rem 0.2rem var(--secondary) !important;
+}

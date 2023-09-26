@@ -1,0 +1,8 @@
+.product-details-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1420px;
+  height: calc(100vh - 89px);
+  justify-content: space-between;
+}
