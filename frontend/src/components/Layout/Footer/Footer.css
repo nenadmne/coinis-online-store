@@ -4,7 +4,6 @@
   background: linear-gradient(225deg, var(--secondary), var(--primary));
   color: var(--grey);
   padding: 2rem;
-  margin-top: 100%;
   width: 100%;
 }
 

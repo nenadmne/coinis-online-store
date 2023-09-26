@@ -3,6 +3,7 @@
   border: 1px solid var(--green-light);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 3rem;
   width: fit-content;
   width: 100%;
