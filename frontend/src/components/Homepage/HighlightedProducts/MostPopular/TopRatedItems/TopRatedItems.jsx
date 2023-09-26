@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import RatingStars from "./RatingStars/RatingStars";
 import "./TopRatedItems.css";
 
 const TopRatedItems = ({ item, selectedOption }) => {
   return (
     <div className="top-rated-item">
-      <img src={item.thumbnail} />
+      <Link to={`/details/${item.id}`}>
+        <img src={item.thumbnail} />
+      </Link>
       <div className="top-rated-content">
         <h2>{item.title}</h2>
         <p> In stock: {item.stock}</p>

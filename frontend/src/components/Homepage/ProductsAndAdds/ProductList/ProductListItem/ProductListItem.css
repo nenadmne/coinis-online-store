@@ -24,3 +24,11 @@
 .list-item-wrapper p {
   margin: 0;
 }
+
+.list-item-wrapper a {
+  width: fit-content
+}
+
+.list-item-wrapper button:hover{
+  background-color: var(--black);
+}

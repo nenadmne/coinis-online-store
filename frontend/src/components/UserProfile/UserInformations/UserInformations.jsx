@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import Card from "../../../UI/Card";
 import Button from "../../../UI/Button";
 import "./UserInformations.css";
+import EditProfile from "./EditProfile/EditProfile";
 
 const UserInformations = ({ userInfo }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Card className="account-info">
       <h2> Account informations </h2>
@@ -26,13 +31,22 @@ const UserInformations = ({ userInfo }) => {
       )}
       <div className="btns">
         <Link>
-          <Button name="Edit" className="btn btn-block btn-outline-dark" />
+          <Button
+            name="Edit"
+            className="btn btn-block btn-outline-dark"
+            function={handleOpen}
+          />
         </Link>
         <Button
           name="Delete my account"
           className="btn btn-block btn-outline-dark"
         />
       </div>
+      <EditProfile
+        user={userInfo}
+        open={open}
+        handleClose={handleClose}
+      />
     </Card>
   );
 };

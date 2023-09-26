@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Card from "../../../../../UI/Card";
 import Button from "../../../../../UI/Button";
 import "./ProductItem.css";
@@ -5,14 +6,16 @@ import "./ProductItem.css";
 const ProductItem = ({ item }) => {
   return (
     <Card className="item-wrapper">
-      <img src={item.thumbnail} />
+      <Link to={`/details/${item.id}`}>
+        <img src={item.thumbnail} />
+      </Link>
       <h2> {item.title} </h2>
       <p>
         <span>$</span>
         <strong>{item.price}</strong>
       </p>
       <Button
-        name="Specifications"
+        name="Add to Cart"
         className="btn btn-block btn-outline-dark btn-xs"
       />
     </Card>

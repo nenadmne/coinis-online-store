@@ -1,0 +1,14 @@
+.edit-profile-form{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.edit-profile-form label{
+    margin: 0;
+}
+
+.edit-profile-form input{
+    width: 25rem;
+    margin-bottom: 1rem;
+}

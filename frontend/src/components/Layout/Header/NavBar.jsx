@@ -15,13 +15,15 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge } from "@mui/material";
 import "./NavBar.css";
 import logo from "../../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Products", "About us", "Support"];
 const settings = ["Profile", "Logout"];
 
 function NavBar({ toggleSideBar, footerRef }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);    
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -36,21 +38,28 @@ function NavBar({ toggleSideBar, footerRef }) {
     if (targetPage === "PRODUCTS") {
       toggleSideBar();
     }
-    if (targetPage === "ABOUT US") {
+    if (targetPage === "ABOUT US" || targetPage === "SUPPORT") {
       if (footerRef.current) {
-        footerRef.current.scrollIntoView({ behavior: 'smooth' });
+        footerRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
 
   const handleCart = () => {};
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (page) => {
     setAnchorElUser(null);
+    if (page === "Profile") {
+      navigate("/profile");
+    }
   };
 
   return (
-    <AppBar position="sticky" display="flex" sx={{ backgroundColor: "var(--secondary)", padding: "0"}}>
+    <AppBar
+      position="sticky"
+      display="flex"
+      sx={{ backgroundColor: "var(--secondary)", padding: "0" }}
+    >
       <Container maxWidth="100%" sx={{ padding: "0px !important" }}>
         <Toolbar disableGutters>
           <Typography
@@ -198,9 +207,9 @@ function NavBar({ toggleSideBar, footerRef }) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {settings.map((item) => (
+                <MenuItem key={item} onClick={() => handleCloseUserMenu(item)}>
+                  <Typography textAlign="center">{item}</Typography>
                 </MenuItem>
               ))}
             </Menu>
