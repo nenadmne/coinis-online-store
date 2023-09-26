@@ -19,7 +19,7 @@ export default function FilterSlider({ stepValue, maxValue }) {
       <p>
         {text}
         <strong>
-          $({value[0]} - {maxValue})
+          $({value[0]} - {value[1]})
         </strong>
       </p>
       <Box sx={{ width: 300 }}>
