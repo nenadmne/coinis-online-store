@@ -1,0 +1,40 @@
+.bought-products {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding: 1rem 0;
+}
+
+.bought-product-info h2 {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bought-image img {
+  width: 50%;
+  object-fit: cover;
+}
+
+.bought-price {
+  font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-weight: 300;
+}
+
+.bought-price div {
+  display: flex;
+  width: 50%;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.bought-price span {
+  margin-bottom: 0 !important;
+  text-align: start;
+}
