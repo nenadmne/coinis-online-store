@@ -1,0 +1,6 @@
+.admin-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+}

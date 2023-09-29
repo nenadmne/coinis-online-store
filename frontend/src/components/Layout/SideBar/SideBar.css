@@ -1,8 +1,11 @@
-.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
-    margin-top: 89px;
-    /* height: fit-content; */
+.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  margin-top: 89px;
 }
 
-.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul{
-    padding: 0;
+.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul {
+  padding: 0;
+}
+
+.css-h4y409-MuiList-root {
+  width: 100%;
 }

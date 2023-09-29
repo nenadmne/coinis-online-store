@@ -31,3 +31,7 @@ main {
   max-width: 1420px;
   padding: 2rem;
 }
+
+ul {
+  list-style: none;
+}

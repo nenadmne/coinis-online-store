@@ -1,0 +1,13 @@
+.new-item-form {
+  padding: 2rem;
+}
+
+.new-item-form input,
+.new-item-form textarea {
+  margin-bottom: 1rem;
+  width: 500px;
+}
+
+.new-item-form label {
+  margin: 0;
+}

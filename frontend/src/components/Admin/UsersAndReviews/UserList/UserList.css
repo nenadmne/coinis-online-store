@@ -1,0 +1,38 @@
+.css-bzqo9b {
+  display: flex;
+  flex-direction: column;
+}
+
+.css-bzqo9b h1 {
+  font-size: 1rem;
+  display: flex;
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.css-rtrcn9-MuiTablePagination-root {
+  width: 100%;
+}
+
+.MuiTablePagination-actions {
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.MuiTablePagination-actions button {
+  width: 2rem;
+}
+
+.css-pdct74-MuiTablePagination-selectLabel,
+.css-levciy-MuiTablePagination-displayedRows {
+  margin: 0;
+}
+
+.css-1e0d89p-MuiButtonBase-root-MuiIconButton-root {
+  width: 3rem;
+}

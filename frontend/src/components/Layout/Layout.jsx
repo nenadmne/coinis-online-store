@@ -19,10 +19,7 @@ function Layout() {
         <Outlet />
         <Footer footerRef={footerRef} />
       </>
-      <SideBar
-        sideBarOpened={sideBarOpened}
-        toggleSideBar={toggleSidebar}
-      />
+      <SideBar sideBarOpened={sideBarOpened} toggleSideBar={toggleSidebar} />
     </>
   );
 }
