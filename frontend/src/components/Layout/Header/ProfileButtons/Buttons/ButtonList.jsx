@@ -2,37 +2,47 @@ import { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import CartModal from "../.././Cart/CartModal";
 import Icon from ".././Buttons/Icon/Icon";
+import InboxModal from "../../Inbox/InboxModal";
+import OrdersModal from "../../OrderedCart/OrdersModal";
 
-export default function ButtonList({handleOpenUserMenu}) {
-
+export default function ButtonList({ handleOpenUserMenu }) {
   const handleOrders = () => {};
-  const handleInbox = () => {};
 
   const [cartOpen, setCartOpen] = useState(false);
   const handleCartOpen = () => setCartOpen(true);
   const handleCartClose = () => setCartOpen(false);
 
+  const [inboxOpen, setInboxOpen] = useState(false);
+  const handleInboxOpen = () => setInboxOpen(true);
+  const handleInboxClose = () => setInboxOpen(false);
+
+  const [ordersOpen, setOrdersOpen] = useState(false);
+  const handleOrdersOpen = () => setOrdersOpen(true);
+  const handleOrdersClose = () => setOrdersOpen(false);
+
   return (
     <>
-      <Tooltip title="Open orders">
+      <Tooltip>
         <Icon
-          onClick={handleOrders}
+          onClick={handleOrdersOpen}
           spanClass="badge bg-teal"
           quantity="67"
           iClass="fas fa-inbox"
           name="Orders"
         />
+        <OrdersModal open={ordersOpen} handleClose={handleOrdersClose} />
       </Tooltip>
-      <Tooltip title="Open inbox">
+      <Tooltip>
         <Icon
-          onClick={handleInbox}
+          onClick={handleInboxOpen}
           spanClass="badge bg-info"
           quantity="12"
           iClass="fas fa-envelope"
           name="Inbox"
         />
+        <InboxModal open={inboxOpen} handleClose={handleInboxClose} />
       </Tooltip>
-      <Tooltip title="Open Cart">
+      <Tooltip>
         <Icon
           onClick={handleCartOpen}
           spanClass="badge bg-info"
@@ -42,7 +52,7 @@ export default function ButtonList({handleOpenUserMenu}) {
         />
         <CartModal open={cartOpen} handleClose={handleCartClose} />
       </Tooltip>
-      <Tooltip title="Open settings">
+      <Tooltip>
         <Icon
           onClick={handleOpenUserMenu}
           iClass="fas fa-user-circle"

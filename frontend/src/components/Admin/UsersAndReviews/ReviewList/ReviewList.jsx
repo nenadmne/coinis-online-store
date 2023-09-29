@@ -89,10 +89,9 @@ export default function ReviewList() {
       headerName: "Rating",
       type: "number",
       align: "left",
-      width: 140,
+      width: 120,
       renderCell: (params) => (
         <Rating
-          name="read-only"
           value={params.value}
           precision={0.5}
           readOnly
@@ -103,7 +102,7 @@ export default function ReviewList() {
     {
       field: "review",
       headerName: "Review",
-      width: 200,
+      width: 220,
       type: "singleSelect",
     },
     {

@@ -1,6 +1,5 @@
 const CategorySelect = ({ onChange, items, selectedOption }) => {
 
-  console.log(items)
   return (
     <>
       <label htmlFor="category"> Select category </label>

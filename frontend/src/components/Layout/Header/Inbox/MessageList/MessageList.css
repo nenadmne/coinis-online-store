@@ -1,0 +1,26 @@
+.inbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  max-width: 400px;
+  padding: 0 !important;
+}
+
+.mark-as-unread {
+  display: flex;
+  align-self: flex-end;
+  width: fit-content;
+  background-color: var(--white);
+}
+
+.inbox-list-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+  background-color: rgb(244, 252, 246);
+}
+
+.inbox-avatar {
+  margin: 0 !important;
+}

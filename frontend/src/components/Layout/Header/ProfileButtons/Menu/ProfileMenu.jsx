@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 const settings = ["Profile", "Logout"];
 
 export default function ProfileMenu({ handleCloseUserMenu, anchorElUser }) {
-    
+
   return (
     <Menu
       sx={{ mt: "3rem" }}
