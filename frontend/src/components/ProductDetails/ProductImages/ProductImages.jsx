@@ -1,33 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
-import ProductContext from "../../../store/product-context";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import SmallImages from "./SmallImages/SmallImages";
 import MainImage from "./MainImage/MainImage";
 import "./ProductImages.css";
 
-const ProductImages = () => {
-  const prodCtx = useContext(ProductContext);
-  const { products } = prodCtx;
-  const { slug } = useParams();
+const ProductImages = ({ product }) => {
   const [current, setCurrent] = useState(0);
   const [length, setLength] = useState(null);
   const [images, setImages] = useState([]);
 
-  const getImages = () => {
-    const productImages = products
-      .filter((item) => item.slug === slug)
-      .map((item) => item.images);
-    return productImages[0]
-  };
-
   useEffect(() => {
-    if (products.length > 0) {
-      setImages(getImages());
+    if (product !== null) {
+      setImages(product.images);
     }
-    if(images.length >0){
-      setLength(images.length)
+    if (images.length > 0) {
+      setLength(images.length);
     }
-  }, [products]);
+  }, [product]);
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
