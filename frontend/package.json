@@ -17,6 +17,7 @@
     "@mui/x-data-grid": "^6.15.0",
     "@mui/x-data-grid-generator": "^6.15.0",
     "admin-lte": "3.2",
+    "axios": "^1.5.1",
     "mdb-react-ui-kit": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

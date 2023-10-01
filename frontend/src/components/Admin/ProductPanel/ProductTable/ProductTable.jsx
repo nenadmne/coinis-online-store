@@ -1,4 +1,5 @@
-import * as React from "react";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,8 +14,9 @@ import {
 import "./ProductTable.css";
 import { Avatar } from "@mui/material";
 
-export default function ProductTable({ items, handleOpen, handleProduct }) {
-  const initialRows = items;
+export default function ProductTable({ handleOpen, handleProduct }) {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
 
   function EditToolbar() {
     const handleClick = () => {
@@ -30,8 +32,14 @@ export default function ProductTable({ items, handleOpen, handleProduct }) {
     );
   }
 
-  const [rows, setRows] = React.useState(initialRows);
-  const [rowModesModel, setRowModesModel] = React.useState({});
+  const [rows, setRows] = useState([]);
+  const [rowModesModel, setRowModesModel] = useState({});
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setRows(products);
+    }
+  }, [products]);
 
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {

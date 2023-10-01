@@ -1,10 +1,9 @@
 import "./SmallImages.css";
 
 const SmallImages = ({ images, current, switchImage }) => {
-
   return (
     <div className="small-image-box">
-      {images[0].map((item, index) => (
+      {images.map((item, index) => (
         <img
           onClick={() => switchImage(index)}
           className={index === current ? "current-image" : ""}

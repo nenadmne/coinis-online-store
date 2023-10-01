@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import * as React from "react";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Input from "../../../../UI/input";
@@ -18,9 +18,10 @@ const style = {
   boxShadow: 24,
 };
 
-export default function EditProduct({ open, handleClose, product, items }) {
+export default function EditProduct({ open, handleClose, product }) {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
   const [itemInfo, setItemInfo] = useState(null);
-
   const [selectedOption, setSelectedOption] = useState("");
   const categoryChangeHandler = (event) => {
     setSelectedOption(event.target.value);
@@ -96,7 +97,7 @@ export default function EditProduct({ open, handleClose, product, items }) {
               <CategorySelect
                 selectedOption={selectedOption}
                 onChange={categoryChangeHandler}
-                items={items}
+                items={products}
               />
               <Input
                 input={{

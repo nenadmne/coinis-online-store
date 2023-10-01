@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import ProductListItem from "./ProductListItem/ProductListItem";
-import "./ProductList.css";
 import Button from "../../../../UI/Button";
+import "./ProductList.css";
 
-
-
-const ProductList = ({items, counterHandler}) => {
+const ProductList = ({ counterHandler }) => {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedItems, setDisplayedItems] = useState([]);
@@ -18,7 +19,7 @@ const ProductList = ({items, counterHandler}) => {
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const newItems = items.slice(startIndex, endIndex);
+    const newItems = products.slice(startIndex, endIndex);
     if (newItems.length > 0) {
       setDisplayedItems((prevItems) => {
         const uniqueItems = newItems.filter(
@@ -27,14 +28,14 @@ const ProductList = ({items, counterHandler}) => {
         return [...prevItems, ...uniqueItems];
       });
     }
-  }, [currentPage]);
+  }, [currentPage, products]);
 
   return (
     <div className="product-list-wrapper">
       {displayedItems.map((item) => (
         <ProductListItem key={item.id} item={item} />
       ))}
-      {displayedItems.length < items.length && (
+      {displayedItems.length < products.length && (
         <Button
           className="btn btn-block btn-outline-success btn-sm show-more-btn"
           name="Show More"

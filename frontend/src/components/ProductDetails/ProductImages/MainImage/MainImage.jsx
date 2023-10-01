@@ -3,13 +3,13 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import "./MainImage.css";
 
 const MainImage = ({ images, prevSlide, nextSlide, current }) => {
-
+  
   return (
     <div className="main-image">
-      {images[0].length > 1 && (
+      {images.length > 1 && (
         <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
       )}
-      {images[0].map((slide, index) => {
+      {images.map((slide, index) => {
         return (
           <div
             className={index === current ? "slide active" : "slide"}
@@ -21,7 +21,7 @@ const MainImage = ({ images, prevSlide, nextSlide, current }) => {
           </div>
         );
       })}
-      {images[0].length > 1 && (
+      {images.length > 1 && (
         <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
       )}
     </div>

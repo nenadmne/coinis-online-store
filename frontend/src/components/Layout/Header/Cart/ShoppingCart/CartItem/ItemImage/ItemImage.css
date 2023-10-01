@@ -1,0 +1,9 @@
+.cart-image-wrapper {
+  height: 100%;
+}
+
+.cart-image {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}

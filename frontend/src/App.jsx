@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage/HomePage";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Admin from "./components/Admin/Admin";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,7 +15,7 @@ function App() {
       element: <Layout />,
       children: [
         { path: "/", element: <Homepage /> },
-        { path: "/details/:id", element: <ProductDetails /> },
+        { path: "/details/:slug", element: <ProductDetails /> },
         { path: "/profile", element: <UserProfile /> },
         { path: "/admin", element: <Admin /> },
       ],
@@ -25,7 +26,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 }
 
 export default App;

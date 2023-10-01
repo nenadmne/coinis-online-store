@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import "./ProductInformations.css";
+import ProductContext from "../../../store/product-context";
 import RatingStars from "../../Homepage/HighlightedProducts/MostPopular/TopRatedItems/RatingStars/RatingStars";
+import "./ProductInformations.css";
 
-const ProductInformations = ({ items }) => {
-  const { id } = useParams();
-  const product = items.filter((item) => item.id === +id);
+const ProductInformations = () => {
+  const { slug } = useParams();
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
+  const product = products.filter((item) => item.slug === slug);
 
   return product.map((item) => (
     <ul className="product-info" key={item}>

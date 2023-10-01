@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import TopRatedItems from "./TopRatedItems/TopRatedItems";
 import "./MostPopular.css";
 
-const MostPopular = ({ items }) => {
+const MostPopular = () => {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
+
   const [selectedOption, setSelectedOption] = useState("Top Rated");
 
   const handleChange = (event) => {
@@ -11,13 +15,13 @@ const MostPopular = ({ items }) => {
 
   const sortItems = () => {
     if (selectedOption === "Top Rated") {
-      return items.slice().sort((a, b) => b.rating - a.rating);
+      return products.slice().sort((a, b) => b.rating - a.rating);
     } else if (selectedOption === "Discount") {
-      return items
+      return products
         .slice()
         .sort((a, b) => b.discountPercentage - a.discountPercentage);
     }
-    return items;
+    return products;
   };
 
   const topItems = sortItems().slice(0, 3);

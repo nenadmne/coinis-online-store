@@ -1,5 +1,5 @@
-import { useState } from "react";
-import * as React from "react";
+import { useState, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import useInput from "../../../../hooks/use-input";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -20,6 +20,9 @@ const style = {
 };
 
 export default function AddProduct({ open, handleClose, items }) {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
+
   const [selectedOption, setSelectedOption] = useState("-");
   const categoryChangeHandler = (event) => {
     setSelectedOption(event.target.value);
@@ -100,7 +103,7 @@ export default function AddProduct({ open, handleClose, items }) {
     imagesIsValid;
 
   const cancelHandler = () => {
-    handleClose()
+    handleClose();
   };
 
   return (
@@ -115,7 +118,7 @@ export default function AddProduct({ open, handleClose, items }) {
           <form method="POST" className="new-item-form">
             <Input
               input={{
-                label:"Title",
+                label: "Title",
                 name: "title",
                 type: "text",
                 onChange: changeTitleHandler,
@@ -137,7 +140,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Price",
+                label: "Price",
                 name: "price",
                 type: "number",
                 onChange: changePriceHandler,
@@ -149,12 +152,12 @@ export default function AddProduct({ open, handleClose, items }) {
             <CategorySelect
               selectedOption={selectedOption}
               onChange={categoryChangeHandler}
-              items={items}
+              items={products}
             />
 
             <Input
               input={{
-                label:"Rating",
+                label: "Rating",
                 name: "rating",
                 type: "number",
                 value: "0",
@@ -164,7 +167,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Discount Percentage",
+                label: "Discount Percentage",
                 name: "discount",
                 type: "number",
                 onChange: changeDiscountHandler,
@@ -175,7 +178,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Brand",
+                label: "Brand",
                 name: "brand",
                 type: "text",
                 onChange: changeBrandHandler,
@@ -186,7 +189,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Stock",
+                label: "Stock",
                 name: "stock",
                 type: "text",
                 onChange: changeStockHandler,
@@ -197,7 +200,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Thumbail",
+                label: "Thumbail",
                 name: "thumbnail",
                 type: "text",
                 onChange: changeThumbnailHandler,
@@ -208,7 +211,7 @@ export default function AddProduct({ open, handleClose, items }) {
 
             <Input
               input={{
-                label:"Images",
+                label: "Images",
                 name: "images",
                 type: "text",
                 onChange: changeImagesHandler,

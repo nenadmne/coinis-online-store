@@ -9,7 +9,6 @@ import "./LogoAndButtons.css";
 const pages = ["Products", "About us", "Support"];
 
 export default function LogoAndButtons({ toggleSideBar, footerRef }) {
-
   const handleCloseNavMenu = (page) => {
     const targetPage = page.target.innerText;
     if (targetPage === "PRODUCTS") {
@@ -47,6 +46,7 @@ export default function LogoAndButtons({ toggleSideBar, footerRef }) {
       </Typography>
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <Menu
+          open={false}
           id="menu-appbar"
           anchorOrigin={{
             vertical: "bottom",

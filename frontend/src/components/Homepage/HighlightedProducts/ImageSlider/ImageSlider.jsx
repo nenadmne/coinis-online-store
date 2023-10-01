@@ -1,16 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../../../../store/product-context";
 import ProductItem from "./ProductItem/ProductItem";
 import SliderArrows from "./SliderArrows/SliderArrows";
 import "./ImageSlider.css";
 
-const ImageSlider = ({items}) => {
+const ImageSlider = () => {
+  const prodCtx = useContext(ProductContext);
+  const { products } = prodCtx;
+
   const [startIndex, setStartIndex] = useState(0);
   const [autoSlideRight, setAutoSlideRight] = useState(true);
 
   const slideLeft = () => {
     setStartIndex((prevStartIndex) => {
       const newIndex = prevStartIndex - 3;
-      return newIndex < 0 ? items.length - 3 + prevStartIndex : newIndex;
+      return newIndex < 0 ? products.length - 3 + prevStartIndex : newIndex;
     });
     setAutoSlideRight(false);
   };
@@ -18,7 +22,9 @@ const ImageSlider = ({items}) => {
   const slideRight = () => {
     setStartIndex((prevStartIndex) => {
       const newIndex = prevStartIndex + 3;
-      return newIndex >= items.length ? newIndex - items.length : newIndex;
+      return newIndex >= products.length
+        ? newIndex - products.length
+        : newIndex;
     });
     setAutoSlideRight(true);
   };
@@ -38,13 +44,13 @@ const ImageSlider = ({items}) => {
 
   function getVisibleItems() {
     const endIndex = startIndex + 3;
-    if (endIndex > items.length) {
+    if (endIndex > products.length) {
       return [
-        ...items.slice(startIndex, items.length),
-        ...items.slice(0, endIndex - items.length),
+        ...products.slice(startIndex, products.length),
+        ...products.slice(0, endIndex - products.length),
       ];
     }
-    return items.slice(startIndex, endIndex);
+    return products.slice(startIndex, endIndex);
   }
 
   const visibleItems = getVisibleItems();
