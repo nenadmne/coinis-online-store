@@ -38,7 +38,7 @@ const MostPopular = () => {
       </select>
       {topItems.map((item) => (
         <TopRatedItems
-          key={item.id}
+          key={item.title}
           item={item}
           selectedOption={selectedOption}
         />

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import ProductContext from "../../../../store/product-context";
 import ProductListItem from "./ProductListItem/ProductListItem";
 import Button from "../../../../UI/Button";
@@ -6,36 +6,23 @@ import "./ProductList.css";
 
 const ProductList = ({ counterHandler }) => {
   const prodCtx = useContext(ProductContext);
-  const { products } = prodCtx;
-  const itemsPerPage = 10;
-  const [currentPage, setCurrentPage] = useState(1);
-  const [displayedItems, setDisplayedItems] = useState([]);
+  const { searchedProducts } = prodCtx;
+  const [itemsToShow, setItemsToShow] = useState(10);
 
   const handleShowMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setItemsToShow((prevItems) => prevItems + 10);
     counterHandler();
   };
 
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const newItems = products.slice(startIndex, endIndex);
-    if (newItems.length > 0) {
-      setDisplayedItems((prevItems) => {
-        const uniqueItems = newItems.filter(
-          (newItem) => !prevItems.some((prevItem) => prevItem.id === newItem.id)
-        );
-        return [...prevItems, ...uniqueItems];
-      });
-    }
-  }, [currentPage, products]);
+  const hasMoreItemsToShow = itemsToShow < searchedProducts.length;
 
   return (
     <div className="product-list-wrapper">
-      {displayedItems.map((item) => (
-        <ProductListItem key={item.id} item={item} />
+      {searchedProducts.slice(0, itemsToShow).map((item) => (
+        <ProductListItem key={item.slug} item={item} />
       ))}
-      {displayedItems.length < products.length && (
+
+      {hasMoreItemsToShow && searchedProducts.length > 10 && (
         <Button
           className="btn btn-block btn-outline-success btn-sm show-more-btn"
           name="Show More"

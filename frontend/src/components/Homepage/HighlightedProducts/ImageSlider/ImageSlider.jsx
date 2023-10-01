@@ -54,6 +54,7 @@ const ImageSlider = () => {
   }
 
   const visibleItems = getVisibleItems();
+  console.log(visibleItems)
 
   return (
     <div className="image-slider-wrapper">

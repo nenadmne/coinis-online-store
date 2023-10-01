@@ -1,4 +1,5 @@
-import * as React from "react";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../../../store/product-context";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -12,10 +13,16 @@ import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import WeekendIcon from "@mui/icons-material/Weekend";
+import getProductsByCategory from "../../../api/apiCalls/getProductsByCategory";
+import getCategories from "../../../api/apiCalls/getCategories";
 import "./SideBar.css";
 
 export default function SideBar({ sideBarOpened, toggleSideBar }) {
-  const [state, setState] = React.useState({
+  const [categories, setCategories] = useState(null);
+  const prodCtx = useContext(ProductContext);
+  const { categoryProducts } = prodCtx;
+
+  const [state, setState] = useState({
     left: false,
   });
 
@@ -29,22 +36,45 @@ export default function SideBar({ sideBarOpened, toggleSideBar }) {
     toggleSideBar();
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getCategories();
+      setCategories(response);
+    }
+
     if (sideBarOpened === true) {
       setState({ ...state, ["left"]: true });
     } else {
       setState({ ...state, ["left"]: false });
     }
+    fetchData();
   }, [sideBarOpened]);
 
-  const categories = [
-    { category: "smartphones", icon: <SmartphoneIcon /> },
-    { category: "laptops", icon: <LaptopIcon /> },
-    { category: "fragrances", icon: <HourglassBottomIcon /> },
-    { category: "skincare", icon: <SelfImprovementIcon /> },
-    { category: "groceries", icon: <LocalDiningIcon /> },
-    { category: "home-decoration", icon: <WeekendIcon /> },
-  ];
+  const categoriesToMap =
+    categories !== null
+      ? [
+          { category: categories[0].name, icon: <SmartphoneIcon /> },
+          { category: categories[1].name, icon: <LaptopIcon /> },
+          { category: categories[2].name, icon: <HourglassBottomIcon /> },
+          { category: categories[3].name, icon: <SelfImprovementIcon /> },
+          { category: categories[4].name, icon: <LocalDiningIcon /> },
+          { category: categories[5].name, icon: <WeekendIcon /> },
+        ]
+      : null;
+
+  const categoryHandler = (category) => {
+    async function fetchData() {
+      try {
+        const fetchedData = await getProductsByCategory(
+          `/categories/${category}`
+        );
+        categoryProducts(fetchedData);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    }
+    fetchData();
+  };
 
   const list = (anchor) => (
     <Box
@@ -54,14 +84,15 @@ export default function SideBar({ sideBarOpened, toggleSideBar }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {categories.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.category} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {categoriesToMap !== null &&
+          categoriesToMap.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton onClick={() => categoryHandler(item.category)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.category} />
+              </ListItemButton>
+            </ListItem>
+          ))}
       </List>
     </Box>
   );

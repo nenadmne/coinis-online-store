@@ -5,7 +5,7 @@ import "./TopRatedItems.css";
 const TopRatedItems = ({ item, selectedOption }) => {
   return (
     <div className="top-rated-item">
-      <Link to={`/details/${item.id}`}>
+      <Link to={`/details/${item.slug}`}>
         <img src={item.thumbnail} />
       </Link>
       <div className="top-rated-content">

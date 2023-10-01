@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 
 const RatingStars = ({ item }) => {
-  console.log(item)
+  
   return (
     <Box
       sx={{

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 18.5%;
+  width: calc(20% - 0.8rem);
   height: 18rem;
 }
 
@@ -26,9 +26,9 @@
 }
 
 .list-item-wrapper a {
-  width: fit-content
+  width: fit-content;
 }
 
-.list-item-wrapper button:hover{
+.list-item-wrapper button:hover {
   background-color: var(--black);
 }
