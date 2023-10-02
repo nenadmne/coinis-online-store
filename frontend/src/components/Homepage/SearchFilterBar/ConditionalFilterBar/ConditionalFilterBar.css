@@ -60,19 +60,3 @@
     padding: 1rem 2rem;
   }
 }
-
-.MuiSlider-rail,
-.MuiSlider-track,
-.MuiSlider-thumb {
-  color: var(--green-light);
-}
-
-.MuiSlider-root,
-.MuiSlider-thumb {
-  padding: 0 !important;
-}
-
-.MuiBox-root {
-  display: flex;
-  align-items: center;
-}

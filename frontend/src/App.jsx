@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
 import Layout from "./components/Layout/Layout";
 import Login from "./components/Login/Login";
 import Homepage from "./components/Homepage/HomePage";
@@ -7,6 +6,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Admin from "./components/Admin/Admin";
 import CartProvider from "./store/CartProvider";
+import Register from "./components/Register/Register";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +23,10 @@ function App() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
     },
   ]);
 

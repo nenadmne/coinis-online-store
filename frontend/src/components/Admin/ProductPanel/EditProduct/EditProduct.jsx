@@ -88,8 +88,6 @@ export default function EditProduct({ open, handleClose, product }) {
   const thumbnailHandler = createChangeHandler("thumbnail", setItemInfo);
   const imagesHandler = createChangeHandler("images", setItemInfo);
 
-  const cancelHandler = () => {};
-
   const validationCheck =
     itemInfo.title !== "" &&
     itemInfo.description !== "" &&
@@ -123,13 +121,18 @@ export default function EditProduct({ open, handleClose, product }) {
     } catch (error) {
       console.error("Error adding product:", error);
     }
- 
+
     editedProduct({
       ...item,
       id: itemInfo.id,
       slug: itemInfo.title.replace(/\s+/g, "-"),
     });
   };
+
+  const cancelHandler = () => {
+    handleClose();
+  };
+
 
   return (
     <div>
@@ -230,9 +233,13 @@ export default function EditProduct({ open, handleClose, product }) {
                   function={cancelHandler}
                 />
                 <Button
-                  className="btn btn-block btn-outline-success"
                   name="submit"
                   type="submit"
+                  className={
+                    validationCheck
+                      ? "btn btn-block btn-outline-success"
+                      : "btn btn-block btn-outline-success disabled"
+                  }
                 />
               </div>
             </form>

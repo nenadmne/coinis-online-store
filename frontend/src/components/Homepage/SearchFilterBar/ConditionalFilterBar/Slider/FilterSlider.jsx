@@ -22,7 +22,7 @@ export default function FilterSlider({ stepValue, maxValue }) {
           $({value[0]} - {value[1]})
         </strong>
       </p>
-      <Box sx={{ width: 300 }}>
+      <Box sx={{ width: 300, padding: "0" }}>
         <Slider
           value={value}
           onChange={handleChange}
@@ -30,6 +30,7 @@ export default function FilterSlider({ stepValue, maxValue }) {
           getAriaValueText={valuetext}
           max={maxValue}
           step={stepValue}
+          className="price-range-slider"
         />
       </Box>
     </div>
