@@ -1,12 +1,15 @@
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductContext from "../../../../store/product-context";
 import useInput from "../../../../hooks/use-input";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "../../../../UI/Button";
 import Input from "../../../../UI/input";
-import CategorySelect from "../../../../UI/CategorySelect";
+import Select from "../../../../UI/Select";
 import Textarea from "../../../../UI/Textarea";
+import addProduct from "../../../../api/apiCalls/addProduct";
+import getCategories from "../../../../api/apiCalls/getCategories";
+import getBrands from "../../../../api/apiCalls/getBrands";
 import "./AddProduct.css";
 
 const style = {
@@ -19,14 +22,35 @@ const style = {
   boxShadow: 24,
 };
 
-export default function AddProduct({ open, handleClose, items }) {
+export default function AddProduct({ open, handleClose }) {
   const prodCtx = useContext(ProductContext);
-  const { products } = prodCtx;
-
-  const [selectedOption, setSelectedOption] = useState("-");
-  const categoryChangeHandler = (event) => {
-    setSelectedOption(event.target.value);
+  const { submitProduct } = prodCtx;
+  const categoryFetcher = async () => {
+    const response = await getCategories();
+    setCategories(response);
   };
+
+  const brandFetcher = async () => {
+    const response = await getBrands();
+    setBrands(response);
+  };
+
+  const [categories, setCategories] = useState(null);
+  const [selectedCategoryOption, setSelectedCategoryOption] = useState("-");
+  const categoryChangeHandler = (event) => {
+    setSelectedCategoryOption(event.target.value);
+  };
+
+  const [brands, setBrands] = useState(null);
+  const [selectedBrandOption, setSelectedBrandOption] = useState("-");
+  const brandChangeHandler = (event) => {
+    setSelectedBrandOption(event.target.value);
+  };
+
+  useEffect(() => {
+    categoryFetcher();
+    brandFetcher();
+  }, []);
 
   const {
     enteredValue: enteredTitle,
@@ -53,14 +77,6 @@ export default function AddProduct({ open, handleClose, items }) {
   } = useInput((enteredPrice) => enteredPrice.trim().length > 0);
 
   const {
-    enteredValue: enteredBrand,
-    isValid: brandIsValid,
-    hasError: brandHasError,
-    onChangeHandler: changeBrandHandler,
-    onBlurHandler: blurBrandHandler,
-  } = useInput((enteredBrand) => enteredBrand.trim().length > 0);
-
-  const {
     enteredValue: enteredStock,
     isValid: stockIsValid,
     hasError: stockHasError,
@@ -82,7 +98,7 @@ export default function AddProduct({ open, handleClose, items }) {
     hasError: thumbnailHasError,
     onChangeHandler: changeThumbnailHandler,
     onBlurHandler: blurThumbnailHandler,
-  } = useInput((enteredThumbnail) => enteredThumbnail.trim().includes("@"));
+  } = useInput((enteredThumbnail) => enteredThumbnail.trim().length > 0);
 
   const {
     enteredValue: enteredImages,
@@ -90,20 +106,56 @@ export default function AddProduct({ open, handleClose, items }) {
     hasError: imagesHasError,
     onChangeHandler: changeImagesHandler,
     onBlurHandler: blurImagesHandler,
-  } = useInput((enteredImages) => enteredImages.trim().includes("@"));
+  } = useInput((enteredImages) => enteredImages.trim().length > 0);
 
   const validationCheck =
     titleIsValid &&
     descriptionIsValid &&
     priceIsValid &&
-    brandIsValid &&
     stockIsValid &&
     discountIsValid &&
     thumbnailIsValid &&
-    imagesIsValid;
+    imagesIsValid &&
+    selectedCategoryOption !== "-" &&
+    selectedBrandOption !== "-";
 
   const cancelHandler = () => {
     handleClose();
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const item = {
+      title: enteredTitle,
+      description: enteredDescription,
+      price: enteredPrice,
+      discountPercentage: enteredDiscount,
+      rating: 0,
+      stock: enteredStock,
+      thumbnail: enteredThumbnail,
+      images: enteredImages.split(","),
+      category: selectedCategoryOption,
+      brand: selectedBrandOption,
+    };
+    try {
+      if (validationCheck) {
+        await addProduct(item);
+        handleClose();
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+    submitProduct(item)
+  };
+
+  const getInputClasses = (isValid, hasError) => {
+    if (hasError) {
+      return "form-control is-invalid";
+    } else if (isValid) {
+      return "form-control is-valid";
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -115,12 +167,17 @@ export default function AddProduct({ open, handleClose, items }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form method="POST" className="new-item-form">
+          <form
+            method="POST"
+            onSubmit={submitHandler}
+            className="new-item-form"
+          >
             <Input
               input={{
                 label: "Title",
                 name: "title",
                 type: "text",
+                inputClasses: getInputClasses(titleIsValid, titleHasError),
                 onChange: changeTitleHandler,
                 onBlur: blurTitleHandler,
                 value: enteredTitle,
@@ -132,6 +189,10 @@ export default function AddProduct({ open, handleClose, items }) {
                 rows: "4",
                 name: "description",
                 type: "text",
+                textareaClasses: getInputClasses(
+                  descriptionIsValid,
+                  descriptionHasError
+                ),
                 onChange: changeDescriptionHandler,
                 onBlur: blurDescriptionHandler,
                 value: enteredDescription,
@@ -143,26 +204,18 @@ export default function AddProduct({ open, handleClose, items }) {
                 label: "Price",
                 name: "price",
                 type: "number",
+                inputClasses: getInputClasses(priceIsValid, priceHasError),
                 onChange: changePriceHandler,
                 onBlur: blurPriceHandler,
                 value: enteredPrice,
                 placeholder: "$ 0.00",
               }}
             />
-            <CategorySelect
-              selectedOption={selectedOption}
+            <Select
+              selectedOption={selectedCategoryOption}
               onChange={categoryChangeHandler}
-              items={products}
-            />
-
-            <Input
-              input={{
-                label: "Rating",
-                name: "rating",
-                type: "number",
-                value: "0",
-                disabled: true,
-              }}
+              items={categories}
+              name="category"
             />
 
             <Input
@@ -170,21 +223,21 @@ export default function AddProduct({ open, handleClose, items }) {
                 label: "Discount Percentage",
                 name: "discount",
                 type: "number",
+                inputClasses: getInputClasses(
+                  discountIsValid,
+                  discountHasError
+                ),
                 onChange: changeDiscountHandler,
                 onBlur: blurDiscountHandler,
                 value: enteredDiscount,
               }}
             />
 
-            <Input
-              input={{
-                label: "Brand",
-                name: "brand",
-                type: "text",
-                onChange: changeBrandHandler,
-                onBlur: blurBrandHandler,
-                value: enteredBrand,
-              }}
+            <Select
+              selectedOption={selectedBrandOption}
+              onChange={brandChangeHandler}
+              items={brands}
+              name="brands"
             />
 
             <Input
@@ -192,6 +245,7 @@ export default function AddProduct({ open, handleClose, items }) {
                 label: "Stock",
                 name: "stock",
                 type: "text",
+                inputClasses: getInputClasses(stockIsValid, stockHasError),
                 onChange: changeStockHandler,
                 onBlur: blurStockHandler,
                 value: enteredStock,
@@ -203,6 +257,10 @@ export default function AddProduct({ open, handleClose, items }) {
                 label: "Thumbail",
                 name: "thumbnail",
                 type: "text",
+                inputClasses: getInputClasses(
+                  thumbnailIsValid,
+                  thumbnailHasError
+                ),
                 onChange: changeThumbnailHandler,
                 onBlur: blurThumbnailHandler,
                 value: enteredThumbnail,
@@ -214,6 +272,7 @@ export default function AddProduct({ open, handleClose, items }) {
                 label: "Images",
                 name: "images",
                 type: "text",
+                inputClasses: getInputClasses(imagesIsValid, imagesHasError),
                 onChange: changeImagesHandler,
                 onBlur: blurImagesHandler,
                 value: enteredImages,
@@ -227,7 +286,11 @@ export default function AddProduct({ open, handleClose, items }) {
                 function={cancelHandler}
               />
               <Button
-                className="btn btn-block btn-outline-success"
+                className={
+                  validationCheck
+                    ? "btn btn-block btn-outline-success"
+                    : "btn btn-block btn-outline-success disabled"
+                }
                 name="submit"
                 type="submit"
               />

@@ -26,6 +26,7 @@
   width: 100%;
   justify-content: right;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .button-div button {

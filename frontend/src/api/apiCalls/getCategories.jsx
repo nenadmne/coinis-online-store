@@ -5,7 +5,7 @@ export default async function getCategories() {
     const response = await api.get("/categories");
     return response.data;
   } catch (error) {
-    console.error("Error fetching products:", error);
-    throw new Error("Failed to fetch products");
+    console.error("Error fetching categories:", error);
+    throw new Error("Failed to fetch categories");
   }
 }

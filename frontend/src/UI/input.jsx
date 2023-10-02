@@ -8,18 +8,13 @@ const Input = (props) => {
     onBlur,
     onClick,
     onKeyUp,
-    hasError,
     inputClasses,
     disabled,
   } = props.input;
 
   return (
     <div className={props.className}>
-      {label && (
-        <label>
-          {label} {props.sup && <sup>*</sup>}
-        </label>
-      )}
+      {label && <label>{label}</label>}
       <input
         className={inputClasses || "form-control"}
         value={value}
@@ -33,8 +28,8 @@ const Input = (props) => {
         autoComplete="off"
         required
       />
-      {hasError && (
-        <p className="error-message"> Uneseni podatak nije validan! </p>
+      {inputClasses === "form-control is-invalid" && (
+        <p className="error-message"> Please enter valid value! </p>
       )}
     </div>
   );

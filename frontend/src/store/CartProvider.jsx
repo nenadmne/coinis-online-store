@@ -94,6 +94,22 @@ const ProductProvider = (props) => {
     fetchData();
   }, []);
 
+  const addProductHandler = (item) => {
+    setProducts((prevData) => [
+      { ...item, id: prevData.length + 1 },
+      ...prevData,
+    ]);
+  };
+
+  const editedProductHandler = (item, slug) => {
+    setProducts((prevData) => {
+      const editedData = prevData.map((prod) =>
+        prod.id === item.id ? item : prod
+      );
+      return [...editedData];
+    });
+  };
+
   const searchProductHandler = (value) => {
     const searchedProduct = products.filter((item) =>
       item.title.toLowerCase().includes(value)
@@ -106,8 +122,11 @@ const ProductProvider = (props) => {
   };
 
   const productContext = {
-    searchedProducts: searchData,
     products: products,
+    submitProduct: addProductHandler,
+    editedProduct: editedProductHandler,
+
+    searchedProducts: searchData,
     searchProducts: searchProductHandler,
     categoryProducts: categoryHandler,
 

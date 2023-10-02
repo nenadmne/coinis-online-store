@@ -1,8 +1,7 @@
-const CategorySelect = ({ onChange, items, selectedOption }) => {
-
+const CategorySelect = ({ onChange, items, selectedOption, name }) => {
   return (
     <>
-      <label htmlFor="category"> Select category </label>
+      <label htmlFor="category"> Select {name} </label>
       <select
         className="category"
         onChange={onChange}
@@ -10,11 +9,11 @@ const CategorySelect = ({ onChange, items, selectedOption }) => {
         required
       >
         <option>{selectedOption}</option>
-        {[...new Set(items.map((item) => item.category))]
-          .filter((category) => category !== selectedOption)
+        {items
+          .filter((category) => category.name !== selectedOption)
           .map((item) => (
-            <option key={item} value={item}>
-              {item}
+            <option key={item.slug} value={item.name}>
+              {item.name}
             </option>
           ))}
       </select>

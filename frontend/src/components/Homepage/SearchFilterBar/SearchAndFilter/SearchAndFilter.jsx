@@ -9,7 +9,7 @@ function SearchAndFilter({ openHandler }) {
   const prodCtx = useContext(ProductContext);
   const { searchProducts } = prodCtx;
 
-  const { value: enteredSearch, valueChangeHandler: changeSearchHandler } =
+  const { enteredValue: enteredSearch, onChangeHandler: changeSearchHandler } =
     useInput((enteredSearch) => enteredSearch.trim().length > 0);
 
   useEffect(() => {

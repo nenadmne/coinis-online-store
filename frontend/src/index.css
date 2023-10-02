@@ -35,3 +35,10 @@ main {
 ul {
   list-style: none;
 }
+
+.error-message {
+  color: var(--red);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 0;
+}

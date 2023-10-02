@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import ProductContext from "../../../../store/product-context";
+import getCategories from "../../../../api/apiCalls/getCategories";
+import getBrands from "../../../../api/apiCalls/getBrands";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Input from "../../../../UI/input";
 import Button from "../../../../UI/Button";
 import Textarea from "../../../../UI/Textarea";
-import CategorySelect from "../../../../UI/CategorySelect";
+import Select from "../../../../UI/Select";
 import "./EditProduct.css";
+import editProduct from "../../../../api/apiCalls/editProduct";
 
 const style = {
   position: "absolute",
@@ -20,11 +23,37 @@ const style = {
 
 export default function EditProduct({ open, handleClose, product }) {
   const prodCtx = useContext(ProductContext);
-  const { products } = prodCtx;
-  const [itemInfo, setItemInfo] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("");
+  const { editedProduct } = prodCtx;
+  const [itemInfo, setItemInfo] = useState({});
+
+  const categoryFetcher = async () => {
+    const response = await getCategories();
+    setCategories(response);
+  };
+
+  const brandFetcher = async () => {
+    const response = await getBrands();
+    setBrands(response);
+  };
+
+  const [categories, setCategories] = useState(null);
+  const [selectedCategoryOption, setSelectedCategoryOption] = useState("-");
   const categoryChangeHandler = (event) => {
-    setSelectedOption(event.target.value);
+    setSelectedCategoryOption(event.target.value);
+    setItemInfo((prevItemInfo) => ({
+      ...prevItemInfo,
+      category: event.target.value,
+    }));
+  };
+
+  const [brands, setBrands] = useState(null);
+  const [selectedBrandOption, setSelectedBrandOption] = useState("-");
+  const brandChangeHandler = (event) => {
+    setSelectedBrandOption(event.target.value);
+    setItemInfo((prevItemInfo) => ({
+      ...prevItemInfo,
+      brand: event.target.value,
+    }));
   };
 
   const createChangeHandler = (key, setState) => (event) => {
@@ -35,24 +64,72 @@ export default function EditProduct({ open, handleClose, product }) {
   };
 
   useEffect(() => {
+    categoryFetcher();
+    brandFetcher();
     if (product) {
-      setItemInfo(product);
-      setSelectedOption(product[0].category);
+      setItemInfo(product[0]);
+      setSelectedCategoryOption(product[0].category);
+      setSelectedBrandOption(product[0].brand);
     }
   }, [product]);
 
-  if (!itemInfo) {
+  if (itemInfo === undefined) {
     return null;
   }
 
   const titleHandler = createChangeHandler("title", setItemInfo);
   const descriptionHandler = createChangeHandler("description", setItemInfo);
   const priceHandler = createChangeHandler("price", setItemInfo);
-  const discountHandler = createChangeHandler("discount_percentage", setItemInfo);
+  const discountHandler = createChangeHandler(
+    "discount_percentage",
+    setItemInfo
+  );
   const stockHandler = createChangeHandler("stock", setItemInfo);
-  const brandHandler = createChangeHandler("brand", setItemInfo);
   const thumbnailHandler = createChangeHandler("thumbnail", setItemInfo);
   const imagesHandler = createChangeHandler("images", setItemInfo);
+
+  const cancelHandler = () => {};
+
+  const validationCheck =
+    itemInfo.title !== "" &&
+    itemInfo.description !== "" &&
+    itemInfo.price !== "" &&
+    itemInfo.discountPercentage !== "" &&
+    itemInfo.stock !== "" &&
+    itemInfo.thumbnail !== "" &&
+    itemInfo.images !== "" &&
+    selectedCategoryOption !== "-" &&
+    selectedBrandOption !== "-";
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const item = {
+      title: itemInfo.title,
+      description: itemInfo.description,
+      price: itemInfo.price,
+      discountPercentage: itemInfo.discountPercentage,
+      rating: itemInfo.rating,
+      stock: itemInfo.stock,
+      thumbnail: itemInfo.thumbnail,
+      images: itemInfo.images,
+      category: itemInfo.category,
+      brand: itemInfo.brand,
+    };
+    try {
+      if (validationCheck) {
+        await editProduct(itemInfo.slug, item);
+        handleClose();
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+ 
+    editedProduct({
+      ...item,
+      id: itemInfo.id,
+      slug: itemInfo.title.replace(/\s+/g, "-"),
+    });
+  };
 
   return (
     <div>
@@ -64,14 +141,18 @@ export default function EditProduct({ open, handleClose, product }) {
       >
         <Box sx={style}>
           {itemInfo !== null && (
-            <form method="POST" className="new-item-form">
+            <form
+              method="POST"
+              onSubmit={submitHandler}
+              className="new-item-form"
+            >
               <Input
                 input={{
                   label: "Title",
                   name: "title",
                   type: "text",
                   onChange: titleHandler,
-                  value: itemInfo[0].title,
+                  value: itemInfo.title || "",
                 }}
               />
               <Textarea
@@ -81,7 +162,7 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "description",
                   type: "text",
                   onChange: descriptionHandler,
-                  value: itemInfo[0].description,
+                  value: itemInfo.description || "",
                 }}
               />
               <Input
@@ -90,23 +171,15 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "price",
                   type: "number",
                   onChange: priceHandler,
-                  value: itemInfo[0].price,
+                  value: itemInfo.price || "",
                   placeholder: "$ 0.00",
                 }}
               />
-              <CategorySelect
-                selectedOption={selectedOption}
+              <Select
+                selectedOption={selectedCategoryOption}
                 onChange={categoryChangeHandler}
-                items={products}
-              />
-              <Input
-                input={{
-                  label: "Rating",
-                  name: "rating",
-                  type: "number",
-                  value: "0",
-                  disabled: true,
-                }}
+                items={categories}
+                name="category"
               />
               <Input
                 input={{
@@ -114,17 +187,14 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "discount",
                   type: "number",
                   onChange: discountHandler,
-                  value: itemInfo[0].discountPercentage,
+                  value: itemInfo.discountPercentage || "",
                 }}
               />
-              <Input
-                input={{
-                  label: "Brand",
-                  name: "brand",
-                  type: "text",
-                  onChange: brandHandler,
-                  value: itemInfo[0].brand,
-                }}
+              <Select
+                selectedOption={selectedBrandOption}
+                onChange={brandChangeHandler}
+                items={brands}
+                name="brand"
               />
               <Input
                 input={{
@@ -132,7 +202,7 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "stock",
                   type: "text",
                   onChange: stockHandler,
-                  value: itemInfo[0].stock,
+                  value: itemInfo.stock || "",
                 }}
               />
               <Input
@@ -141,7 +211,7 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "thumbnail",
                   type: "text",
                   onChange: thumbnailHandler,
-                  value: itemInfo[0].thumbnail,
+                  value: itemInfo.thumbnail || "",
                 }}
               />
               <Input
@@ -150,13 +220,14 @@ export default function EditProduct({ open, handleClose, product }) {
                   name: "images",
                   type: "text",
                   onChange: imagesHandler,
-                  value: itemInfo[0].images,
+                  value: itemInfo.images || "",
                 }}
               />
               <div className="button-div">
                 <Button
                   className="btn btn-block btn-outline-danger"
                   name="cancel"
+                  function={cancelHandler}
                 />
                 <Button
                   className="btn btn-block btn-outline-success"

@@ -26,7 +26,7 @@ const Textarea = (props) => {
         placeholder={placeholder}
         required
       />
-      {hasError && (
+      {textareaClasses === "form-control is-invalid" && (
         <p className="error-message"> Uneseni podatak nije validan! </p>
       )}
     </div>

@@ -11,8 +11,9 @@ import {
   GridActionsCellItem,
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
-import "./ProductTable.css";
 import { Avatar } from "@mui/material";
+import deleteProduct from "../../../../api/apiCalls/deleteProduct";
+import "./ProductTable.css";
 
 export default function ProductTable({ handleOpen, handleProduct }) {
   const prodCtx = useContext(ProductContext);
@@ -49,6 +50,11 @@ export default function ProductTable({ handleOpen, handleProduct }) {
 
   const handleDeleteClick = (id) => () => {
     setRows(rows.filter((row) => row.id !== id));
+    const [slug] = rows.filter((row) => row.id === id).map((item) => item.slug);
+    const deleteHandler = async () => {
+      await deleteProduct(slug);
+    };
+    deleteHandler();
   };
 
   const processRowUpdate = (newRow) => {
@@ -119,7 +125,7 @@ export default function ProductTable({ handleOpen, handleProduct }) {
       width: 220,
       type: "text",
       renderCell: (params) =>
-        params.value.map((item) => <Avatar src={item} key={item} />),
+        params.value.map((item, index) => <Avatar src={item} key={index} />),
     },
     {
       field: "actions",

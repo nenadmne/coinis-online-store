@@ -2,6 +2,9 @@ import React from "react";
 
 const ProductContext = React.createContext({
   products: [],
+  submitProduct: (item) => {},
+  editedProduct: (item) => {},
+  
   searchedProducts: [],
   searchProducts: (items) => {},
   categoryProducts: (items) => {},

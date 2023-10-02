@@ -33,6 +33,13 @@
   display: flex;
   justify-content: right;
   padding: 0.5rem 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
+  outline: 0;
+}
+
+.category:focus{
+  outline: 0;
 }
 
 .brand {
