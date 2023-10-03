@@ -11,6 +11,7 @@ function NavBar({ toggleSideBar, footerRef }) {
       position="sticky"
       display="flex"
       sx={{ backgroundColor: "var(--secondary)", padding: "0" }}
+      className="nav-bar-wrapper"
     >
       <Container maxWidth="100%" sx={{ padding: "0px !important" }}>
         <Toolbar disableGutters>

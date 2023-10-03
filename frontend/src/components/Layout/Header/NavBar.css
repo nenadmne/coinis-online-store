@@ -1,3 +1,15 @@
+.nav-bar-wrapper {
+  max-width: 375px;
+  overflow: hidden;
+}
+
+.profile-div {
+  width: 100%;
+}
+
+.icon-wrapper {
+  width: 100%;
+}
 .pages-div {
   display: flex;
   flex-direction: row;

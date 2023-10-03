@@ -2,10 +2,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 40%;
-  height: calc(30rem + 2px);
-  padding: 2rem;
-  border: 1px solid var(--green-light);
+  width: 100%;
+  height: fit-content;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.custom-select {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  line-height: 0.8rem;
 }
 
 .custom-select,
@@ -16,4 +23,22 @@
 
 .custom-select option {
   cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .most-popular {
+    width: 40%;
+    height: calc(30rem + 2px);
+    padding: 2rem;
+    border: 1px solid var(--green-light);
+    margin-bottom: 0;
+  }
+  .custom-select {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
 }

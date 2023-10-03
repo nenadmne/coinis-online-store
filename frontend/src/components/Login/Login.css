@@ -1,7 +1,37 @@
-.p-4{
-    max-width: 1200px;
-    height: 100%;
+.login-wrapper {
+  min-width: 375px;
+  display: flex;
+  justify-content: center;
+}
+.login-image-wrapper {
+  flex-basis: 0% !important;
+}
+.login-form-wrapper {
+  flex-basis: 100% !important;
+  width: 100%;
+  max-width: unset !important;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-box {
+  max-width: 450px;
+}
+
+@media (min-width: 768px) {
+  .login-image-wrapper,
+  .login-form-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 50% !important;
+    max-width: unset !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-image-wrapper {
+    flex-basis: 60% !important;
+  }
+  .login-form-wrapper {
+    flex-basis: 40% !important;
+  }
 }

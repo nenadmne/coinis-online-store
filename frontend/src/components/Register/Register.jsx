@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./Register.css";
 
 function Copyright(props) {
   return (
@@ -41,9 +42,10 @@ export default function Register() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container sx={{ height: "100vh" }} className="register-wrapper">
         <CssBaseline />
         <Grid
+          className="register-image-wrapper"
           item
           xs={false}
           sm={4}
@@ -56,11 +58,21 @@ export default function Register() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          className="register-form-wrapper"
+        >
           <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
+            <Container maxWidth="xs">
               <CssBaseline />
               <Box
+                className="register-form-box"
                 sx={{
                   marginTop: 8,
                   display: "flex",

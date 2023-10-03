@@ -1,19 +1,20 @@
 .add-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
   width: 100%;
-  height: 580px;
+  height: 100%;
   overflow: hidden;
   position: relative;
   animation: blur-in 2s ease-in;
   opacity: 1;
+  gap: 1rem;
 }
 
 .add-wrapper img {
-  width: calc(100% - 4rem);
-  height: 20%;
+  width: 18%;
+  height: 100%;
   object-fit: cover;
   margin-bottom: 0.25rem;
 }
@@ -21,10 +22,10 @@
 .add-wrapper::after {
   content: "";
   position: absolute;
-  top: -1rem;
-  left: 0;
-  width: 8rem;
-  height: 8rem;
+  top: -0.5rem;
+  left: -0.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   background-image: url("../../../../assets/specialOffer.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -39,4 +40,30 @@
   100% {
     opacity: 1;
   }
+}
+
+@media (min-width: 768px) {
+  .add-wrapper {
+    flex-direction: column;
+    width: 100%;
+    height: 580px;
+    gap: unset;
+  }
+
+  .add-wrapper img {
+    width: calc(100% - 4rem);
+    height: 20%;
+    object-fit: cover;
+    margin-bottom: 0.25rem;
+  }
+
+  .add-wrapper::after {
+    left: 0;
+    top: -1rem;
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
 }

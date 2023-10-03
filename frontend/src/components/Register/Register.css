@@ -1,7 +1,35 @@
-.p-4{
-    max-width: 1200px;
-    height: 100%;
+.register-wrapper {
+  min-width: 375px;
+  display: flex;
+  justify-content: center;
+}
+.register-image-wrapper {
+  flex-basis: 0% !important;
+}
+.register-form-wrapper {
+  flex-basis: 100% !important;
+  max-width: unset !important;
+  justify-content: center;
+}
+
+.register-form-box {
+  max-width: 450px;
+}
+
+@media (min-width: 768px) {
+  .register-image-wrapper,
+  .register-form-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-basis: 50% !important;
+    max-width: unset !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .register-image-wrapper {
+    flex-basis: 60% !important;
+  }
+  .register-form-wrapper {
+    flex-basis: 40% !important;
+  }
 }

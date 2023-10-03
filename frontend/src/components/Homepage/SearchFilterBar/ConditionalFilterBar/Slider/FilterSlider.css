@@ -1,15 +1,19 @@
 .filter-by-value {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0rem;
   align-items: center;
+  width: 100%;
+}
+
+.slider-box {
+  width: calc(100% - 1rem);
 }
 
 .filter-by-value p {
   margin: 0;
   color: var(--secondary);
   font-size: 1rem;
-  width: 16rem;
 }
 
 .price-range-slider {
@@ -22,4 +26,18 @@
 
 .MuiSlider-valueLabelLabel {
   color: var(--white) !important;
+}
+
+@media (min-width: 768px) {
+  .filter-by-value {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+  }
+  .filter-by-value p {
+    width: 16rem;
+  }
+}
+
+@media (min-width: 1024px) {
 }

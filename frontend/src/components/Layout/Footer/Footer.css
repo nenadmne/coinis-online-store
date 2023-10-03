@@ -1,12 +1,24 @@
 .footer-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: linear-gradient(225deg, var(--secondary), var(--primary));
   color: var(--grey);
-  padding: 2rem;
+  padding: 1rem;
   width: 100%;
+  gap: 1rem;
 }
 
 .footer-wrapper h1 {
   margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-wrapper {
+    flex-direction: row;
+    padding: 2rem;
+    gap: 0;
+  }
+}
+
+@media (min-width: 1024px) {
 }

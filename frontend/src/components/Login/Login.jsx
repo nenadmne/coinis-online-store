@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./Login.css";
 
 function Copyright(props) {
   return (
@@ -42,9 +43,10 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container className="login-wrapper" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
+          className="login-image-wrapper"
           item
           xs={false}
           sm={4}
@@ -57,8 +59,18 @@ export default function Login() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          className="login-form-wrapper"
+        >
           <Box
+            className="login-form-box"
             sx={{
               my: 8,
               mx: 4,

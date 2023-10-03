@@ -3,11 +3,12 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 
 const RatingStars = ({ item }) => {
-  
   return (
     <Box
       sx={{
         "& > legend": { mt: 2 },
+        display: "flex",
+        flexDirection: "row",
       }}
     >
       <span>{item.rating}</span>
@@ -17,6 +18,7 @@ const RatingStars = ({ item }) => {
         precision={0.5}
         readOnly
         size="small"
+        sx={{ marginLeft: "0.5rem", display: "flex", alignSelf: "center" }}
       />
     </Box>
   );

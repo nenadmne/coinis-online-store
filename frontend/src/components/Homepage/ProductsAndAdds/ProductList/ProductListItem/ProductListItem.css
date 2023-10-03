@@ -3,12 +3,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: calc(20% - 0.8rem);
+  width: calc(50% - 0.5rem);
   height: 18rem;
+  padding: 1rem;
 }
 
 .list-item-wrapper img {
-  width: 8rem;
+  width: 100%;
   height: 8rem;
   object-fit: cover;
   border-radius: 0.5rem;
@@ -31,4 +32,18 @@
 
 .list-item-wrapper button:hover {
   background-color: var(--black);
+}
+
+@media (min-width: 768px) {
+  .list-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(20% - 0.8rem);
+    height: 18rem;
+  }
+}
+
+@media (min-width: 1024px) {
 }

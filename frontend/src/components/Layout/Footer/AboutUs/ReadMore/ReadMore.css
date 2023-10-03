@@ -6,6 +6,14 @@
   overflow: visible;
 }
 
+.closed ul,
+.opened ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .closed {
   animation: pop-out 1s ease-out;
   opacity: 0;
@@ -52,4 +60,10 @@
     visibility: hidden;
     overflow: hidden;
   }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
 }
