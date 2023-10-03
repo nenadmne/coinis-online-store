@@ -8,10 +8,13 @@
 @media (min-width: 768px) {
   .highlighted-products {
     flex-direction: row;
-    gap: 4rem;
+    gap: 1rem;
     margin-bottom: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .highlighted-products {
+    gap: 4rem;
+  }
 }

@@ -53,8 +53,10 @@
 
 @media (min-width: 768px) {
   .item-wrapper {
-    width: 30%;
-    height: 21rem;
+    width: calc(50% - 0.5rem);
+    height: 19rem;
+    box-shadow: 0.25rem 0.25rem 0.25rem var(--secondary);
+    border: 1px solid var(--primary);
   }
 
   .item-wrapper h2 {
@@ -65,11 +67,6 @@
   .item-wrapper span,
   .item-wrapper strong {
     font-size: 1.25rem;
-  }
-
-  .item-wrapper img {
-    width: 10rem;
-    height: 10rem;
   }
 
   @keyframes slideFromRight {
@@ -87,4 +84,12 @@
 }
 
 @media (min-width: 1024px) {
+  .item-wrapper {
+    height: 21rem;
+    width: calc(33% - 0.8rem);
+  }
+  .item-wrapper img {
+    width: 10rem;
+    height: 10rem;
+  }
 }

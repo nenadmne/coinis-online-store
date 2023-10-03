@@ -59,10 +59,12 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 769) {
+      if (window.innerWidth < 768) {
         setItemsPerSlide(1); // Display 1 item on smaller screens
-      } else {
-        setItemsPerSlide(3); // Display 3 items on screens wider than 768px
+      } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+        setItemsPerSlide(2); // Display 3 items on screens wider than 768px
+      } else if (window.innerWidth >= 1024) {
+        setItemsPerSlide(3); //
       }
     };
     handleResize();

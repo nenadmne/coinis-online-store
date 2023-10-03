@@ -29,11 +29,6 @@
 }
 
 @media (min-width: 768px) {
-  .filter-by-value {
-    flex-direction: row;
-    gap: 2rem;
-    align-items: center;
-  }
   .filter-by-value p {
     width: 16rem;
   }

@@ -45,13 +45,17 @@
 
 @media (min-width: 768px) {
   .ticket-submit {
-    padding: 2rem;
+    padding: 1rem;
     width: 50%;
   }
 }
 
 @media (min-width: 1024px) {
-  .footer-input {
+  .ticket-submit {
+    padding: 2rem;
+    width: 50%;
+  }
+  .footer-form {
     width: 500px;
   }
 }

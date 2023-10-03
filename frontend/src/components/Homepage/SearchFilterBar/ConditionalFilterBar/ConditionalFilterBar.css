@@ -65,8 +65,7 @@
 @media (min-width: 768px) {
   .filter-wrapper {
     flex-direction: row;
-    gap: 3rem;
-    padding: 1rem 2rem;
+    gap: 1rem;
   }
   .slider-wrapper {
     width: fit-content;
@@ -75,4 +74,7 @@
 }
 
 @media (min-width: 1024px) {
+  .filter-wrapper {
+    gap: 3rem;
+  }
 }

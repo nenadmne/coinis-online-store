@@ -30,8 +30,8 @@
 @media (min-width: 768px) {
   .most-popular {
     width: 40%;
-    height: calc(30rem + 2px);
-    padding: 2rem;
+    height: calc(28rem + 2px);
+    padding: 2rem 1rem;
     border: 1px solid var(--green-light);
     margin-bottom: 0;
   }
@@ -41,4 +41,7 @@
 }
 
 @media (min-width: 1024px) {
+  .most-popular {
+    height: calc(30rem + 2px);
+  }
 }

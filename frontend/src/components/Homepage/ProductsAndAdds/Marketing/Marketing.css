@@ -1,7 +1,6 @@
 .add-wrapper {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
   flex-direction: row;
   width: 100%;
   height: 100%;
@@ -51,7 +50,7 @@
   }
 
   .add-wrapper img {
-    width: calc(100% - 4rem);
+    width: 100%;
     height: 20%;
     object-fit: cover;
     margin-bottom: 0.25rem;
@@ -66,4 +65,10 @@
 }
 
 @media (min-width: 1024px) {
+  .add-wrapper {
+    align-items: center;
+  }
+  .add-wrapper img {
+    width: calc(100% - 4rem);
+  }
 }

@@ -76,6 +76,11 @@
 @media (min-width: 768px) {
   .radio-wrapper {
     gap: 1rem;
+    flex-direction: column;
+  }
+
+  .radio-wrapper label {
+    font-size: 1rem;
   }
 }
 

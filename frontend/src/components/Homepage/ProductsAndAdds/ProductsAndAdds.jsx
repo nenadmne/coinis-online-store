@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Marketing from "./Marketing/Marketing";
 import ProductList from "./ProductList/ProductList";
 import "./ProductsAndAdds.css";
 
 const ProductsAndAdds = () => {
   const [counter, setCounter] = useState(0);
-  const [secondAdd, setSecondAdd] = useState(false);
-  const [thirdAdd, setThirdAdd] = useState(false);
+  const [marketingComponents, setMarketingComponents] = useState([]);
   const counterHandler = () => {
     setCounter((prevCounter) => prevCounter + 1);
   };
 
   useEffect(() => {
-    if (counter === 1) {
-      setSecondAdd(true);
-    } else if (counter === 2) {
-      setThirdAdd(true);
+    if (window.innerWidth >= 768 && counter > 0) {
+      const marketingComponents = [];
+      for (let i = 1; i <= counter; i++) {
+        marketingComponents.push(<Marketing key={i} />);
+      }
+      setMarketingComponents(marketingComponents);
     }
   }, [counter]);
 
@@ -24,8 +25,9 @@ const ProductsAndAdds = () => {
       <ProductList counterHandler={counterHandler} />
       <div className="marketing-wrapper">
         <Marketing />
-        {secondAdd && <Marketing />}
-        {thirdAdd && <Marketing />}
+        {marketingComponents.map((component, index) => (
+          <Fragment key={index}>{component}</Fragment>
+        ))}
       </div>
     </section>
   );

@@ -40,10 +40,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: calc(20% - 0.8rem);
+    width: calc(33.33% - 0.67rem);
     height: 18rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .list-item-wrapper {
+    width: calc(20% - 0.8rem);
+  }
 }

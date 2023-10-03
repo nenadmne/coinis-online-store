@@ -5,11 +5,13 @@
 
 .profile-div {
   width: 100%;
+  overflow: hidden;
 }
 
 .icon-wrapper {
   width: 100%;
 }
+
 .pages-div {
   display: flex;
   flex-direction: row;
@@ -52,9 +54,21 @@
   color: var(--black);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .profile-div svg {
     font-size: 3rem;
+  }
+
+  .nav-bar-wrapper {
+    max-width: unset;
+  }
+
+  .profile-div {
+    width: unset;
+  }
+
+  .icon-wrapper {
+    width: 100%;
   }
 
   .avatar {

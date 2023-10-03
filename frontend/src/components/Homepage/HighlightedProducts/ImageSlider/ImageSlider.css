@@ -24,6 +24,7 @@
     padding: 2rem;
     border: 1px solid var(--green-light);
     margin-top: 0;
+    height: fit-content;
   }
 
   .displayed-products {
