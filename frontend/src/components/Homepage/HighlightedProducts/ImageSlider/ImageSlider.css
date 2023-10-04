@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 800px;
   margin-top: 1rem;
+  overflow: hidden;
 }
 
 .displayed-products {

@@ -1,20 +1,41 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductContext from "../../../../store/product-context";
+import { useDebounce } from "@uidotdev/usehooks";
 import Input from "../../../../UI/input";
 import Button from "../../../../UI/Button";
-import useInput from "../../../../hooks/use-input";
+import searchProduct from "../../../../api/apiCalls/searchProduct";
 import "./SearchAndFilter.css";
 
 function SearchAndFilter({ openHandler }) {
   const prodCtx = useContext(ProductContext);
-  const { searchProducts } = prodCtx;
+  const { categoryProducts, products } = prodCtx;
 
-  const { enteredValue: enteredSearch, onChangeHandler: changeSearchHandler } =
-    useInput((enteredSearch) => enteredSearch.trim().length > 0);
+  const [results, setResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   useEffect(() => {
-    searchProducts(enteredSearch.toLowerCase());
-  }, [enteredSearch]);
+    const searchHN = async () => {
+      let results = [];
+      if (debouncedSearchTerm) {
+        const data = await searchProduct(debouncedSearchTerm);
+        results = data || [];
+      }
+      setResults(results);
+    };
+    searchHN();
+  }, [debouncedSearchTerm]);
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      categoryProducts(products);
+    } else {
+      categoryProducts(results);
+    }
+  }, [results]);
 
   return (
     <div className="search-filter">
@@ -22,8 +43,8 @@ function SearchAndFilter({ openHandler }) {
         input={{
           inputClasses: "form-control",
           placeholder: "Search...",
-          onChange: changeSearchHandler,
-          value: enteredSearch,
+          onChange: handleChange,
+          value: searchTerm,
         }}
       />
       <Button

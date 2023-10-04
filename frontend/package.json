@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.11",
     "@mui/x-data-grid": "^6.15.0",
     "@mui/x-data-grid-generator": "^6.15.0",
+    "@uidotdev/usehooks": "^2.3.1",
     "admin-lte": "3.2",
     "axios": "^1.5.1",
     "mdb-react-ui-kit": "^6.3.0",
