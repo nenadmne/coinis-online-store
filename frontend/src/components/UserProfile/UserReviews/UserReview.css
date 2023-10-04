@@ -1,7 +1,7 @@
 .user-review-wrapper {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 100%;
   margin-bottom: 1rem;
 }
 
@@ -48,21 +48,13 @@
   font-weight: 300 bold;
 }
 
-/* @media (min-width: 0px) {
+@media (min-width: 768px) {
   .user-review-wrapper {
-    width: 337.5px;
-    flex-direction: column;
+    width: calc(50% - 0.5rem);
   }
 }
-
-@media (min-width: 650px) {
+@media (min-width: 1024px) {
   .user-review-wrapper {
-    width: 450px;
+    width: 23%;
   }
 }
-
-@media (min-width: 1100px) {
-  .user-review-wrapper {
-    width: 20%;
-  }
-} */

@@ -1,7 +1,23 @@
-.product-images{
-  padding: 4rem 2rem;
+.product-images {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
+  width: 100%;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .product-images {
+    padding: 4rem 2rem;
+    justify-content: space-between;
+    width: 50%;
+    gap: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-images {
+    padding: 4rem 2rem;
+    gap: 0;
+  }
 }

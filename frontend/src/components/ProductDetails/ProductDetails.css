@@ -1,8 +1,25 @@
 .product-details-wrapper {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 1420px;
-  height: calc(100vh - 89px);
-  justify-content: space-between;
+  flex-direction: column;
+  width: 375px;
+  max-width: 375px;
+  height: fit-content;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .product-details-wrapper {
+    gap: 0rem;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1420px;
+    height: fit-content;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-details-wrapper {
+    height: calc(100vh - 89px);
+  }
 }

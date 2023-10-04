@@ -1,5 +1,5 @@
 .account-info {
-  width: 23%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -33,22 +33,14 @@
   margin-top: 0.65rem;
 }
 
-/* @media (max-width: 650px) {
+@media (min-width: 768px) {
   .account-info {
-    width: 337.5px;
+    width: calc(50% - 0.5rem);
   }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 1024px) {
   .account-info {
-    width: 450px;
+    width: 23%;
   }
 }
-
-@media (min-width: 1100px) {
-  .account-info {
-    width: 20%;
-    display: flex;
-    justify-content: left;
-  }
-} */

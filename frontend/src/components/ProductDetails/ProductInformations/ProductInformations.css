@@ -1,8 +1,8 @@
 .product-info {
   display: flex;
   flex-direction: column;
-  padding: 4rem 2rem;
-  width: 40%;
+  padding: 1rem;
+  width: 100%;
   margin: 0;
   list-style: none;
 }
@@ -38,7 +38,7 @@
   outline: 0;
 }
 
-.category:focus{
+.category:focus {
   outline: 0;
 }
 
@@ -106,4 +106,20 @@
   padding: 0.25rem;
   line-height: 1.25rem;
   width: fit-content;
+}
+
+@media (min-width: 768px) {
+  .product-info {
+    flex-direction: column;
+    padding: 4rem 2rem;
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-info {
+    flex-direction: column;
+    padding: 4rem 2rem;
+    width: 40%;
+  }
 }

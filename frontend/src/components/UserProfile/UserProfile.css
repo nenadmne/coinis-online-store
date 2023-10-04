@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: row;
-  padding: 2rem;
-  width: 100%;
-  max-width: 1420px;
-  height: calc(100vh - 89px);
+  flex-direction: column;
+  padding: 1rem;
+  width: 375px;
+  height: fit-content;
+  gap: 1rem;
 }
 
 .user-wrapper h2 {
@@ -20,76 +20,24 @@
   width: fit-content;
 }
 
-
-/* @media (max-width: 650px) {
-  .user-wrapperm,
-  .section-wrapper,
-  .password-input-wrapper,
-  .back-button-wrapper {
-    width: 337.5px;
-    flex-direction: column;
-  }
-
-  .back-button-wrapper {
-    align-items: center;
-  }
-
-  .btns button,
-  .password-button button {
-    width: 8rem;
+@media (min-width: 768px) {
+  .user-wrapper {
+    padding: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    max-height: 700px;
+    height: fit-content;
   }
 }
 
-@media (min-width: 650px) {
-  .back-button-wrapper {
-    width: 450px;
-    align-items: center;
-  }
 
-  .section-wrapper {
-    width: 450px;
-    flex-direction: column;
-  }
-
-  .btns button,
-  .password-button button {
-    width: 8rem;
-  }
-}
-
-@media (min-width: 1100px) {
-  .section-wrapper {
+@media (min-width: 1024px) {
+  .user-wrapper {
+    padding: 2rem;
     width: 100%;
     flex-direction: row;
-  }
-
-  .back-button-wrapper {
-    width: calc(80% + 3rem);
-  }
-
-  .btns button,
-  .password-button button {
-    width: 5rem;
-  }
-
-  .btns {
-    justify-content: center;
+    gap: unset;
+    max-width: 1420px;
+    height: calc(100vh - 89px);
   }
 }
-
-@media (min-width: 1400px) {
-  .btns button {
-    width: 7rem;
-  }
-
-  .btns {
-    justify-content: left;
-  }
-}
-
-@media (min-width: 1600px) {
-  .btns button,
-  .password-button button {
-    width: 8rem;
-  }
-} */

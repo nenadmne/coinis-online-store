@@ -38,3 +38,15 @@
   margin-bottom: 0 !important;
   text-align: start;
 }
+
+@media (min-width: 768px) {
+  .bought-products {
+    width: calc(50% - 0.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bought-products {
+    width: 23%;
+  }
+}
