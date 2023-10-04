@@ -1,8 +1,7 @@
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import React, { useState } from "react";
-import { MDBBtn, MDBIcon, MDBInput, MDBRow } from "mdb-react-ui-kit";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import CartContext from "../../../../../../../store/product-context";
+import Input from "../../../../../../../UI/input";
+import Icon from "../../../../ProfileButtons/Buttons/Icon/Icon";
 import "./ItemQuantity.css";
 
 export default function ItemQuantity({ item }) {
@@ -14,24 +13,20 @@ export default function ItemQuantity({ item }) {
   const { addItem, removeItem } = cartCtx;
 
   return (
-    <MDBRow className="quantity-row">
-      <div className="quantity-wrapper" style={{ maxWidth: "300px" }}>
-        <MDBBtn
-          onClick={() => removeItem(item.id, value)}
-          className="px-3 me-2"
-          noRipple={true}
-        >
-          <MDBIcon fas icon="minus" />
-        </MDBBtn>
-        <MDBInput value={value} onChange={valueHandler} min={1} type="number" className="quantity-input" />
-        <MDBBtn
-          onClick={() => addItem({ ...item, amount: +value })}
-          className="px-3 me-2"
-          noRipple={true}
-        >
-          <MDBIcon fas icon="plus" />
-        </MDBBtn>
-      </div>
-    </MDBRow>
+    <div className="cart-quantity-wrapper">
+      <Icon
+        className="quantity-btn"
+        onClick={() => removeItem(item.id, value)}
+        iClass="fas fa-minus"
+      />
+      <Input
+        input={{ value: value, onChange: valueHandler, min: 1, type: "number" }}
+      />
+      <Icon
+        className="quantity-btn"
+        onClick={() => addItem({ ...item, amount: +value })}
+        iClass="fas fa-plus"
+      />
+    </div>
   );
 }

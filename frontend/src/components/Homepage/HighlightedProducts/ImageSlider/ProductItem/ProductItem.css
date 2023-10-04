@@ -84,6 +84,24 @@
 }
 
 @media (min-width: 1024px) {
+  .item-wrapper h2 {
+    font-size: 1rem;
+    height: 3.75rem;
+  }
+  .item-wrapper {
+    width: calc(33% - 0.8rem);
+  }
+  .item-wrapper img {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .item-wrapper h2 {
+    font-size: 1.25rem;
+    height: 4.5rem;
+  }
   .item-wrapper {
     height: 21rem;
     width: calc(33% - 0.8rem);

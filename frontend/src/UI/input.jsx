@@ -2,6 +2,7 @@ const Input = (props) => {
   const {
     label,
     value,
+    min,
     type,
     placeholder,
     onChange,
@@ -18,6 +19,7 @@ const Input = (props) => {
       <input
         className={inputClasses || "form-control"}
         value={value}
+        min={min}
         type={type}
         onChange={onChange}
         onBlur={onBlur}

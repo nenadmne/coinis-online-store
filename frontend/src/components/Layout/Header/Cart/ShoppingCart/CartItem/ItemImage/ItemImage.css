@@ -1,9 +1,26 @@
-.cart-image-wrapper {
-  height: 100%;
+.cart-item-image {
+  width: fit-content;
+  display: flex;
 }
-
-.cart-image {
-  height: 100%;
+.cart-item-image img {
+  width: 8rem;
+  height: 8rem;
   object-fit: cover;
   border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  .cart-item-image img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart-item-image img {
+    width: 7rem;
+    height: 7rem;
+  }
 }

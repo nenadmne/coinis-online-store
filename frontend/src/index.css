@@ -12,6 +12,8 @@
   --green-light: rgb(40, 167, 69);
   --red: darkred;
   --pale: #e6f7ff;
+  --cart-blue: rgb(0, 123, 255);
+  --cart-border: rgba(245, 245, 245);
 }
 
 body,
@@ -29,7 +31,7 @@ html,
 
 main {
   width: 100%;
-  max-width: 1420px;
+  max-width: 420px;
   padding: 1rem;
   min-width: 375px;
 }
@@ -48,5 +50,6 @@ ul {
 @media (min-width: 768px) {
   main {
     padding: 2rem;
+    max-width: 1420px;
   }
 }

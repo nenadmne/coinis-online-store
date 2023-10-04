@@ -76,5 +76,9 @@
 @media (min-width: 1024px) {
   .filter-wrapper {
     gap: 3rem;
+    padding: 1rem 2rem;
+  }
+  .slide-up {
+    padding: 0rem;
   }
 }

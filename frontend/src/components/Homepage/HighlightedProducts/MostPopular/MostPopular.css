@@ -41,6 +41,15 @@
 }
 
 @media (min-width: 1024px) {
+  .custom-select,
+  .custom-select option {
+    font-size: 1rem;
+    padding: 0.5rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
   .most-popular {
     height: calc(30rem + 2px);
   }

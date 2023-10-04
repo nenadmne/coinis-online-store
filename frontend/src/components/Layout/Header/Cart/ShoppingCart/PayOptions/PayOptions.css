@@ -1,0 +1,23 @@
+.pay-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.pay-options {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.pay-options img {
+  width: calc(25% - 0.25rem);
+}
+
+@media (min-width: 768px) {
+  .pay-options img {
+    width: 5rem;
+  }
+}

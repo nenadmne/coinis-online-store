@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+.ticket-submit h2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+
 .footer-form {
   display: flex;
   flex-direction: column;
@@ -55,7 +63,16 @@
     padding: 2rem;
     width: 50%;
   }
+  .ticket-submit h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
   .footer-form {
     width: 500px;
+  }
+  .ticket-submit h2 {
+    text-align: center;
   }
 }

@@ -1,6 +1,10 @@
 .icon-wrapper {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  gap: 1rem;
+}
+
+.icon-wrapper button {
+  padding: 0;
 }

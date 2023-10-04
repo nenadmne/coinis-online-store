@@ -6,7 +6,7 @@ import "./TicketSubmit.css";
 const TicketSubmit = () => {
   return (
     <div className="ticket-submit">
-      <h1> Customer support </h1>
+      <h2> Customer support </h2>
       <form className="footer-form">
         <Input
           input={{ label: "Enter your name", type: "text" }}

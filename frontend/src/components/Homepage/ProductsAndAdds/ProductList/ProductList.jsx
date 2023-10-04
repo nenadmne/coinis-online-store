@@ -12,7 +12,9 @@ const ProductList = ({ counterHandler }) => {
   const handleShowMore = () => {
     if (window.innerWidth <= 768) {
       setItemsToShow((prevItems) => prevItems + 6);
-    } else if (window.innerWidth >= 1024) {
+    } else if (window.innerWidth >= 1024 && window.innerWidth < 1200) {
+      setItemsToShow((prevItems) => prevItems + 8);
+    } else if (window.innerWidth >= 1200) {
       setItemsToShow((prevItems) => prevItems + 10);
     }
 
@@ -25,7 +27,9 @@ const ProductList = ({ counterHandler }) => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setItemsToShow(6);
-      } else if (window.innerWidth >= 1024) {
+      } else if (window.innerWidth >= 1024 && window.innerWidth < 1200) {
+        setItemsToShow(8);
+      } else if (window.innerWidth >= 1200) {
         setItemsToShow(10);
       }
     };

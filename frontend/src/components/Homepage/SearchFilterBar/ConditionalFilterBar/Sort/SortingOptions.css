@@ -85,4 +85,8 @@
 }
 
 @media (min-width: 1024px) {
+  .radio-wrapper {
+    gap: 1rem;
+    flex-direction: row;
+  }
 }

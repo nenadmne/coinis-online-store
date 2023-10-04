@@ -4,7 +4,7 @@ const FooterDescription = ({ showMoreHandler }) => {
     
   return (
     <div className="footer-description">
-      <h1>About Us - SilkRoad</h1>
+      <h2>About Us - SilkRoad</h2>
       <p>
         Welcome to SilkRoad, where exquisite craftsmanship meets the allure of
         the exotic. At SilkRoad, we pride ourselves on curating an unparalleled

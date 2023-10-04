@@ -1,7 +1,6 @@
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useContext } from "react";
 import CartContext from "../../../../../../../store/product-context";
-import { MDBBtn, MDBCol, MDBIcon } from "mdb-react-ui-kit";
+import Icon from "../../../../ProfileButtons/Buttons/Icon/Icon";
 import "./ItemProduct.css";
 
 export default function ItemProduct({ item }) {
@@ -13,23 +12,21 @@ export default function ItemProduct({ item }) {
     .map((item) => item.amount);
 
   return (
-    <MDBCol lg="5" className="cart-item-info">
-      <p className="cart-info-title">{item.title}</p>
-      <p className="cart-info-amount">
+    <div className="cart-item-info">
+      <h2>
+        <strong>{item.title}</strong>
+      </h2>
+      <p>
         Amount: <strong>{amount}</strong>
       </p>
-      <p className="cart-info-price">${item.price}</p>
-
-      <MDBBtn
-        wrapperProps={{ size: "sm" }}
-        wrapperClass="cart-trash"
-        className="cart-trash"
-        title="Remove item"
+      <p style={{ color: "var(--green-light)", fontWeight: "700" }}>
+        ${item.price}
+      </p>
+      <Icon
+        iClass="fas fa-trash"
+        className="trash-button"
         onClick={() => removeItem(item.id, amount)}
-        noRipple={true}
-      >
-        <MDBIcon fas icon="trash" />
-      </MDBBtn>
-    </MDBCol>
+      />
+    </div>
   );
 }

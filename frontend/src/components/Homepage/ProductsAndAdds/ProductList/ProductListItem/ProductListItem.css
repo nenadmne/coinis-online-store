@@ -47,6 +47,12 @@
 
 @media (min-width: 1024px) {
   .list-item-wrapper {
+    width: calc(25% - 0.75rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .list-item-wrapper {
     width: calc(20% - 0.8rem);
   }
 }
