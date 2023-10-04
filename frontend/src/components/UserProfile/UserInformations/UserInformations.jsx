@@ -42,11 +42,7 @@ const UserInformations = ({ userInfo }) => {
           className="btn btn-block btn-outline-dark"
         />
       </div>
-      <EditProfile
-        user={userInfo}
-        open={open}
-        handleClose={handleClose}
-      />
+      <EditProfile user={userInfo} open={open} handleClose={handleClose} />
     </Card>
   );
 };

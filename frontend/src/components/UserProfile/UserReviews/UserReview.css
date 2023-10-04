@@ -51,10 +51,14 @@
 @media (min-width: 768px) {
   .user-review-wrapper {
     width: calc(50% - 0.5rem);
+    max-width: 400px;
+    margin-bottom: 0;
   }
 }
-@media (min-width: 1024px) {
+
+@media (min-width: 1200px) {
   .user-review-wrapper {
-    width: 23%;
+    width: calc(25% - 1.25rem);
+    max-width: unset;
   }
 }

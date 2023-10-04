@@ -42,11 +42,13 @@
 @media (min-width: 768px) {
   .bought-products {
     width: calc(50% - 0.5rem);
+    max-width: 400px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .bought-products {
-    width: 23%;
+    width: calc(25% - 1.25rem);
+    max-width: unset;
   }
 }

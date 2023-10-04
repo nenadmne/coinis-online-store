@@ -27,17 +27,20 @@
     flex-wrap: wrap;
     max-height: 700px;
     height: fit-content;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .user-wrapper {
+    align-items: flex-start;
     padding: 2rem;
     width: 100%;
     flex-direction: row;
-    gap: unset;
+    gap: 2rem;
     max-width: 1420px;
     height: calc(100vh - 89px);
+    flex-wrap: unset;
   }
 }

@@ -1,10 +1,11 @@
-import "./SortingOptions.css";
+import { useState } from "react";
 import SouthIcon from "@mui/icons-material/South";
 import Button from "../../../../../UI/Button";
-import { useState } from "react";
+import "./SortingOptions.css";
 
-const SortingOptions = () => {
+const SortingOptions = ({ submitHandler }) => {
   const options = ["Sort by name", "Sort by price", "Sort by rating"];
+  const [selectedOption, setSelectedOption] = useState("price");
 
   const [rotateStates, setRotateStates] = useState(() =>
     Array(options.length).fill(false)
@@ -22,6 +23,13 @@ const SortingOptions = () => {
   const inputHandler = (index) => {
     const newClickStates = Array(options.length).fill(false);
     newClickStates[index] = true;
+    if (index === 0) {
+      setSelectedOption("title");
+    } else if (index === 1) {
+      setSelectedOption("price");
+    } else if (index === 2) {
+      setSelectedOption("rating");
+    }
     setClickedStates(newClickStates);
   };
 
@@ -55,6 +63,7 @@ const SortingOptions = () => {
           className="btn btn-block btn-outline-success"
           name="submit"
           type="submit"
+          function={() => submitHandler(selectedOption)}
         />
       </div>
     </div>

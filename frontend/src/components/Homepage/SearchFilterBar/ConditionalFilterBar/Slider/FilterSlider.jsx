@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import "./FilterSlider.css";
@@ -7,12 +7,29 @@ function valuetext(value) {
   return value;
 }
 
-export default function FilterSlider({ stepValue, maxValue }) {
-  const [value, setValue] = React.useState([0, maxValue]);
+export default function FilterSlider({
+  sliderHandler,
+  stepValue,
+  maxValue,
+  sliderValues,
+}) {
+  const [value, setValue] = useState([0, maxValue]);
+  const [valueIsChanged, setValueIsChanged] = useState(false);
   const handleChange = (event, newValue) => {
+    setValueIsChanged(!valueIsChanged);
     setValue(newValue);
   };
   const text = `Filter by Price Range `;
+
+  useEffect(() => {
+    sliderHandler(value[0], value[1]);
+  }, [valueIsChanged]);
+
+  useEffect(() => {
+    if (sliderValues === false) {
+      setValue([0, maxValue]);
+    }
+  }, [sliderValues]);
 
   return (
     <div className="filter-by-value">

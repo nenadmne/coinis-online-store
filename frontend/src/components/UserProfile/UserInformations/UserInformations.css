@@ -36,11 +36,13 @@
 @media (min-width: 768px) {
   .account-info {
     width: calc(50% - 0.5rem);
+    max-width: 400px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .account-info {
-    width: 23%;
+    max-width: unset;
+    width: calc(25% - 1.25rem);
   }
 }

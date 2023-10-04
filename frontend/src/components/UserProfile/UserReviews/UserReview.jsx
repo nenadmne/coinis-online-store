@@ -13,9 +13,7 @@ const UserReview = ({ username, reviewInfo }) => {
             <div className="left-review-side">
               {item.review} ({item.reviewer_rating})
             </div>
-            <Link
-              className="user-review-image"
-            >
+            <Link className="user-review-image">
               <img src={item.thumbnail} />
             </Link>
           </div>

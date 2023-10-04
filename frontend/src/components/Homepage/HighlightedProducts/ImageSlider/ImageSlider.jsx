@@ -53,18 +53,17 @@ const ImageSlider = () => {
         ...products.slice(0, endIndex - products.length),
       ];
     }
-    console.log(startIndex, endIndex);
     return products.slice(startIndex, endIndex);
   }
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setItemsPerSlide(1); // Display 1 item on smaller screens
+        setItemsPerSlide(1); 
       } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-        setItemsPerSlide(2); // Display 3 items on screens wider than 768px
+        setItemsPerSlide(2); 
       } else if (window.innerWidth >= 1024) {
-        setItemsPerSlide(3); //
+        setItemsPerSlide(3); 
       }
     };
     handleResize();
