@@ -12,7 +12,7 @@ function SearchFilterBar() {
   return (
     <section className="section-wrapper">
       <SearchAndFilter openHandler={clickHandler} />
-      <ConditionalFilterBar open={open} />
+      <ConditionalFilterBar open={open} clickHandler={clickHandler} />
     </section>
   );
 }

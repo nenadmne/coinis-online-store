@@ -35,27 +35,21 @@ export default function ButtonList({ handleOpenUserMenu }) {
         spanClass="badge bg-teal"
         quantity="67"
         iClass="fas fa-inbox"
-        name="Orders"
       />
+
       <Icon
         onClick={handleInboxOpen}
         spanClass="badge bg-info"
         quantity="12"
         iClass="fas fa-envelope"
-        name="Inbox"
       />
       <Icon
         onClick={handleCartOpen}
         spanClass="badge bg-info"
         quantity={productQuantity}
         iClass="fas fa-shopping-cart"
-        name="Cart"
       />
-      <Icon
-        onClick={handleOpenUserMenu}
-        iClass="fas fa-user-circle"
-        name="Profile"
-      />
+      <Icon onClick={handleOpenUserMenu} iClass="fas fa-user-circle" />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import SouthIcon from "@mui/icons-material/South";
 import Button from "../../../../../UI/Button";
 import "./SortingOptions.css";
 
-const SortingOptions = ({ submitHandler }) => {
+const SortingOptions = ({ submitHandler, clickHandler, open }) => {
   const options = ["Sort by name", "Sort by price", "Sort by rating"];
   const [selectedOption, setSelectedOption] = useState("price");
 
@@ -33,36 +33,44 @@ const SortingOptions = ({ submitHandler }) => {
     setClickedStates(newClickStates);
   };
 
+  const cancelHandler = () => {
+    clickHandler();
+  };
+
   return (
     <div className="sort-wrapper">
       <div className="radio-wrapper">
-        {options.map((item, index) => (
-          <label key={item}>
-            <input
-              onClick={() => inputHandler(index)}
-              type="radio"
-              name="sortOption"
-            />
-            {item}
-            <div
-              className={`icon-wrapper ${
-                rotateStates[index] ? "rotate" : "rotate-back"
-              }`}
-            >
-              <SouthIcon
-                onClick={() => rotateHandler(index)}
-                className={clickedStates[index] ? "bump" : ""}
+        {open &&
+          options.map((item, index) => (
+            <label key={item}>
+              <input
+                onClick={() => inputHandler(index)}
+                type="radio"
+                name="sortOption"
               />
-            </div>
-          </label>
-        ))}
+              {item}
+              <div
+                className={`icon-wrapper ${
+                  rotateStates[index] ? "rotate" : "rotate-back"
+                }`}
+              >
+                <SouthIcon
+                  onClick={() => rotateHandler(index)}
+                  className={clickedStates[index] ? "bump" : ""}
+                />
+              </div>
+            </label>
+          ))}
       </div>
       <div className="button-div">
-        <Button className="btn btn-block btn-outline-danger" name="cancel" />
+        <Button
+          className="btn btn-block btn-outline-danger"
+          name="cancel"
+          function={cancelHandler}
+        />
         <Button
           className="btn btn-block btn-outline-success"
           name="submit"
-          type="submit"
           function={() => submitHandler(selectedOption)}
         />
       </div>

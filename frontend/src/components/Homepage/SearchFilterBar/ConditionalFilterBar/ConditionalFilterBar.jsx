@@ -6,7 +6,7 @@ import filterProduct from "../../../../api/apiCalls/filterProducts";
 import "./ConditionalFilterBar.css";
 import ProductContext from "../../../../store/product-context";
 
-function ConditionalFilterBar({ open }) {
+function ConditionalFilterBar({ open, clickHandler }) {
   const prodCtx = useContext(ProductContext);
   const { filterHandler } = prodCtx;
 
@@ -35,6 +35,9 @@ function ConditionalFilterBar({ open }) {
   const submitHandler = async (order) => {
     const result = await filterProduct(values[0], values[1], order);
     filterHandler(result);
+    setSliderValues(false);
+    setCustomValues(false);
+    clickHandler()
   };
 
   const filterBarClass = open
@@ -55,7 +58,11 @@ function ConditionalFilterBar({ open }) {
           customHandler={customHandler}
         />
       </div>
-      <SortingOptions submitHandler={submitHandler} />
+      <SortingOptions
+        open={open}
+        clickHandler={clickHandler}
+        submitHandler={submitHandler}
+      />
     </div>
   );
 }
