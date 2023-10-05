@@ -9,7 +9,17 @@ const ImageSlider = () => {
   const { products } = prodCtx;
   const [startIndex, setStartIndex] = useState(0);
   const [autoSlideRight, setAutoSlideRight] = useState(true);
-  const [itemsPerSlide, setItemsPerSlide] = useState(1);
+  const [itemsPerSlide, setItemsPerSlide] = useState(getItemsPerSlide());
+
+  function getItemsPerSlide() {
+    if (window.innerWidth < 768) {
+      return 1;
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      return 2;
+    } else if (window.innerWidth >= 1024) {
+      return 3;
+    }
+  }
 
   const slideLeft = () => {
     setStartIndex((prevStartIndex) => {
@@ -43,22 +53,16 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(autoSlide, 5000);
     return () => clearInterval(interval);
-  }, [autoSlideRight]);
+  }, [autoSlideRight, itemsPerSlide]);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerSlide(1);
-      } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-        setItemsPerSlide(2);
-      } else if (window.innerWidth >= 1024) {
-        setItemsPerSlide(3);
-      }
+      setItemsPerSlide(getItemsPerSlide());
     };
     handleResize();
-    window.addEventListener("resize", handleResize());
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize());
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -117,6 +121,7 @@ const ImageSlider = () => {
     }
   }
   const visibleItems = getVisibleItems();
+  
   return (
     <div className="image-slider-wrapper" ref={imageSliderWrapperRef}>
       <div className="displayed-products">
