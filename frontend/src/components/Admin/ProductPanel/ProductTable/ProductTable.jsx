@@ -155,8 +155,24 @@ export default function ProductTable({ handleOpen, handleProduct }) {
     },
   ];
 
+  const gridColumns =
+    window.innerWidth < 768
+      ? [columns[0], columns[2], columns[10]]
+      : window.innerWidth >= 768 && window.innerWidth < 1400
+      ? [
+          columns[0],
+          columns[2],
+          columns[3],
+          columns[4],
+          columns[5],
+          columns[6],
+          columns[10],
+        ]
+      : columns;
+
   return (
     <Box
+      className="product-grid"
       sx={{
         height: 500,
         width: "100%",
@@ -170,7 +186,7 @@ export default function ProductTable({ handleOpen, handleProduct }) {
     >
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={gridColumns}
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}

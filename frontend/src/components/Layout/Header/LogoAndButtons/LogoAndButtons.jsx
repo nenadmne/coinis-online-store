@@ -19,9 +19,12 @@ export default function LogoAndButtons({ toggleSideBar, footerRef }) {
     toggleMenu();
 
     const targetPage = page.target.innerText;
-    if (targetPage === "PRODUCTS" || targetPage === "Products") {
+    if (targetPage.toUpperCase() === "PRODUCTS") {
       toggleSideBar();
-    } else if (targetPage === "ABOUT US" || targetPage === "SUPPORT") {
+    } else if (
+      targetPage.toUpperCase() === "ABOUT US" ||
+      targetPage.toUpperCase() === "SUPPORT"
+    ) {
       if (footerRef.current) {
         footerRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -32,11 +35,7 @@ export default function LogoAndButtons({ toggleSideBar, footerRef }) {
     <div className="logo-and-pages">
       {window.innerWidth < 768 && (
         <>
-          <Drawer
-            anchor="left"
-            open={isMenuOpen}
-            onClose={toggleMenu}
-          >
+          <Drawer anchor="left" open={isMenuOpen} onClose={toggleMenu}>
             <div className="menu">
               {pages.map((page) => (
                 <Button

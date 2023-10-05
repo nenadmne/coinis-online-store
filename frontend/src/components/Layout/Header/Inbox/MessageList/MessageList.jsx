@@ -83,7 +83,7 @@ export default function MessageList() {
       field: "email",
       headerName: "Email",
       type: "e-mail",
-      width: 200,
+      width: 180,
     },
     {
       field: "title",
@@ -102,9 +102,16 @@ export default function MessageList() {
       field: "date",
       headerName: "Date",
       type: "date",
-      width: 200,
+      width: 150,
     },
   ];
+
+  const gridColumns =
+    window.innerWidth < 768
+      ? [columns[0], columns[3]]
+      : window.innerWidth >= 768 && window.innerWidth < 1300
+      ? [columns[0], columns[1], columns[3]]
+      : columns;
 
   return (
     <Box
@@ -121,7 +128,7 @@ export default function MessageList() {
     >
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={gridColumns}
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}

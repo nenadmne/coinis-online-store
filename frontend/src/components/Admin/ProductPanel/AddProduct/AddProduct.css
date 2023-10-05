@@ -1,5 +1,5 @@
 .new-item-form {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem;
   max-height: 80vh;
   overflow: hidden;
   overflow-y: scroll;
@@ -7,9 +7,20 @@
 
 .new-item-form input,
 .new-item-form textarea {
-  width: 500px;
+  width: 300px;
 }
 
 .new-item-form label {
   margin: 1rem 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .new-item-form {
+    padding: 1rem 2rem 2rem 2rem;
+  }
+
+  .new-item-form input,
+  .new-item-form textarea {
+    width: 500px;
+  }
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import {
@@ -48,8 +48,8 @@ const initialRows = [
 ];
 
 export default function UserList() {
-  const [rows, setRows] = React.useState(initialRows);
-  const [rowModesModel, setRowModesModel] = React.useState({});
+  const [rows, setRows] = useState(initialRows);
+  const [rowModesModel, setRowModesModel] = useState({});
 
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -81,7 +81,7 @@ export default function UserList() {
       field: "joinDate",
       headerName: "Date created",
       type: "date",
-      width: 110,
+      width: 100,
     },
     {
       field: "email",
@@ -94,7 +94,7 @@ export default function UserList() {
       type: "actions",
       align: "center",
       headerName: "Actions",
-      width: 100,
+      width: 90,
 
       getActions: ({ id }) => {
         return [
@@ -109,8 +109,12 @@ export default function UserList() {
     },
   ];
 
+  const gridColumns =
+    window.innerWidth < 768 ? [columns[0], columns[1], columns[3]] : columns;
+    
   return (
     <Box
+      className="user-grid"
       sx={{
         height: "fit-content",
         width: "fit-content",
@@ -126,7 +130,7 @@ export default function UserList() {
       <h1> User List </h1>
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={gridColumns}
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}

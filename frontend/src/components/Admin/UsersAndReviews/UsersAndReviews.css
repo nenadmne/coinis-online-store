@@ -1,6 +1,23 @@
 .admin-list-wrapper {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .admin-list-wrapper {
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1400px) {
+  .admin-list-wrapper {
     flex-direction: row;
     justify-content: space-between;
+    gap: 0;
+  }
 }

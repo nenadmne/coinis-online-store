@@ -82,7 +82,7 @@ export default function ReviewList() {
     {
       field: "name",
       headerName: "Name",
-      width: 150,
+      width: 140,
     },
     {
       field: "rating",
@@ -91,12 +91,7 @@ export default function ReviewList() {
       align: "left",
       width: 120,
       renderCell: (params) => (
-        <Rating
-          value={params.value}
-          precision={0.5}
-          readOnly
-          size="small"
-        />
+        <Rating value={params.value} precision={0.5} readOnly size="small" />
       ),
     },
     {
@@ -116,7 +111,7 @@ export default function ReviewList() {
       type: "actions",
       align: "center",
       headerName: "Actions",
-      width: 100,
+      width: 80,
 
       getActions: ({ id }) => {
         return [
@@ -131,8 +126,12 @@ export default function ReviewList() {
     },
   ];
 
+  const gridColumns =
+    window.innerWidth < 768 ? [columns[0], columns[1], columns[4]] : columns;
+
   return (
     <Box
+      className="review-grid"
       sx={{
         height: "fit-content",
         width: "fit-content",
@@ -148,7 +147,7 @@ export default function ReviewList() {
       <h1> Review List </h1>
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={gridColumns}
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}

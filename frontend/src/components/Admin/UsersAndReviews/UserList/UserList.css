@@ -1,9 +1,10 @@
-.css-bzqo9b {
+.user-grid {
   display: flex;
   flex-direction: column;
+  padding: 0 !important;
 }
 
-.css-bzqo9b h1 {
+.user-grid h1 {
   font-size: 1rem;
   display: flex;
   align-self: flex-start;
@@ -35,4 +36,13 @@
 
 .css-1e0d89p-MuiButtonBase-root-MuiIconButton-root {
   width: 3rem;
+}
+
+@media (min-width: 768px) {
+  .user-grid {
+    padding: unset;
+  }
+}
+
+@media (min-width: 1024px) {
 }

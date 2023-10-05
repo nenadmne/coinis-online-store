@@ -125,6 +125,9 @@ export default function OrderList() {
     },
   ];
 
+  const gridColumns =
+    window.innerWidth < 768 ? [columns[0], columns[3]] : columns;
+
   return (
     <Box
       sx={{
@@ -140,7 +143,7 @@ export default function OrderList() {
     >
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={gridColumns}
         editMode="row"
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}

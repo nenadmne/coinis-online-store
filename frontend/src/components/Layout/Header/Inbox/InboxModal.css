@@ -1,6 +1,6 @@
-.inbox{
-    display: flex;
-    align-items: flex-start !important; 
-    overflow: hidden;
-    overflow-y: scroll;
+.inbox {
+  display: flex;
+  align-items: flex-start !important;
+  overflow: hidden;
+  overflow-y: scroll;
 }
