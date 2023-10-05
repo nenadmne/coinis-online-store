@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import CartContext from "../../../../../store/product-context";
+import ProductContext from "../../../../../store/product-context";
 import Button from "../../../../../UI/Button";
 import Card from "../../../../../UI/Card";
 import "./ProductListItem.css";
 
 const ProductListItem = ({ item }) => {
-  const cartCtx = useContext(CartContext);
+  const prodCtx = useContext(ProductContext);
+  const { addItem } = prodCtx;
 
   const addToCartHandler = (item) => {
-    cartCtx.addItem({
+    addItem({
       id: item.id,
       title: item.title,
       thumbnail: item.thumbnail,

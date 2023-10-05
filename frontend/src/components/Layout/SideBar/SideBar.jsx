@@ -20,7 +20,7 @@ import "./SideBar.css";
 export default function SideBar({ sideBarOpened, toggleSideBar }) {
   const [categories, setCategories] = useState(null);
   const prodCtx = useContext(ProductContext);
-  const { categoryProducts } = prodCtx;
+  const { filterHandler } = prodCtx;
 
   const [state, setState] = useState({
     left: false,
@@ -68,7 +68,7 @@ export default function SideBar({ sideBarOpened, toggleSideBar }) {
         const fetchedData = await getProductsByCategory(
           `/categories/${category}`
         );
-        categoryProducts(fetchedData);
+        filterHandler(fetchedData);
       } catch (error) {
         console.error("Error fetching products:", error);
       }

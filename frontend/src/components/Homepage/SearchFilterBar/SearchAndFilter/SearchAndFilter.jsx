@@ -8,7 +8,7 @@ import "./SearchAndFilter.css";
 
 function SearchAndFilter({ openHandler }) {
   const prodCtx = useContext(ProductContext);
-  const { categoryProducts, products } = prodCtx;
+  const { filterHandler, products } = prodCtx;
 
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,9 +31,9 @@ function SearchAndFilter({ openHandler }) {
 
   useEffect(() => {
     if (searchTerm === "") {
-      categoryProducts(products);
+      filterHandler(products);
     } else {
-      categoryProducts(results);
+      filterHandler(results);
     }
   }, [results]);
 

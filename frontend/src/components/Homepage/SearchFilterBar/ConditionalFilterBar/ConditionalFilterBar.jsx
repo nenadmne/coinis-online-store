@@ -8,7 +8,7 @@ import ProductContext from "../../../../store/product-context";
 
 function ConditionalFilterBar({ open }) {
   const prodCtx = useContext(ProductContext);
-  const { categoryProducts } = prodCtx;
+  const { filterHandler } = prodCtx;
 
   const [values, setValues] = useState([0, 10000]);
   const [sliderValues, setSliderValues] = useState(false);
@@ -34,7 +34,7 @@ function ConditionalFilterBar({ open }) {
 
   const submitHandler = async (order) => {
     const result = await filterProduct(values[0], values[1], order);
-    categoryProducts(result);
+    filterHandler(result);
   };
 
   const filterBarClass = open

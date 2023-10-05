@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import CartContext from "../../../../../../../store/product-context";
+import ProductContext from "../../../../../../../store/product-context";
 import Input from "../../../../../../../UI/input";
 import Icon from "../../../../ProfileButtons/Buttons/Icon/Icon";
 import "./ItemQuantity.css";
@@ -9,8 +9,8 @@ export default function ItemQuantity({ item }) {
   const valueHandler = (event) => {
     setValue(event.target.value);
   };
-  const cartCtx = useContext(CartContext);
-  const { addItem, removeItem } = cartCtx;
+  const prodCtx = useContext(ProductContext);
+  const { addItem, removeItem } = prodCtx;
 
   return (
     <div className="cart-quantity-wrapper">

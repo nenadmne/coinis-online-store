@@ -4,8 +4,8 @@ import Button from "../../../../../../UI/Button";
 import "./Summary.css";
 
 export default function Summary() {
-  const cartCtx = useContext(ProductContext);
-  const { totalAmount, cartItems } = cartCtx;
+  const prodCtx = useContext(ProductContext);
+  const { totalAmount, cartItems } = prodCtx;
 
   const isMobile = window.innerWidth < 768;
 

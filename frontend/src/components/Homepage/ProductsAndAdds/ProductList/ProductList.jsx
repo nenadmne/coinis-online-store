@@ -6,7 +6,7 @@ import "./ProductList.css";
 
 const ProductList = ({ counterHandler }) => {
   const prodCtx = useContext(ProductContext);
-  const { searchedProducts } = prodCtx;
+  const { filteredProducts } = prodCtx;
   const [itemsToShow, setItemsToShow] = useState(6);
 
   const handleShowMore = () => {
@@ -21,7 +21,7 @@ const ProductList = ({ counterHandler }) => {
     counterHandler();
   };
 
-  const hasMoreItemsToShow = itemsToShow < searchedProducts.length;
+  const hasMoreItemsToShow = itemsToShow < filteredProducts.length;
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,12 +44,12 @@ const ProductList = ({ counterHandler }) => {
   return (
     <div className="product-list-wrapper">
       <div className="product-list">
-        {searchedProducts.slice(0, itemsToShow).map((item) => (
+        {filteredProducts.slice(0, itemsToShow).map((item) => (
           <ProductListItem key={item.slug} item={item} />
         ))}
       </div>
 
-      {hasMoreItemsToShow && searchedProducts.length > itemsToShow && (
+      {hasMoreItemsToShow && filteredProducts.length > itemsToShow && (
         <Button
           className="btn btn-block btn-outline-success btn-sm show-more-btn"
           name="Show More"

@@ -5,9 +5,8 @@ const ProductContext = React.createContext({
   submitProduct: (item) => {},
   editedProduct: (item) => {},
   
-  searchedProducts: [],
-  searchProducts: (items) => {},
-  categoryProducts: (items) => {},
+  filteredProducts: [],
+  filterHandler: (items) => {},
 
   cartItems: [],
   totalAmount: 0,

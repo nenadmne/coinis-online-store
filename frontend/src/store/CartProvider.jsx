@@ -67,7 +67,7 @@ const cartReducer = (state, action) => {
 
 const ProductProvider = (props) => {
   const [products, setProducts] = useState([]);
-  const [searchData, setSearchData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     defaultCartState
@@ -86,7 +86,7 @@ const ProductProvider = (props) => {
       try {
         const productData = await getProducts();
         setProducts(productData);
-        setSearchData(productData);
+        setFilteredData(productData);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -110,15 +110,8 @@ const ProductProvider = (props) => {
     });
   };
 
-  const searchProductHandler = (value) => {
-    const searchedProduct = products.filter((item) =>
-      item.title.toLowerCase().includes(value)
-    );
-    setSearchData(searchedProduct);
-  };
-
-  const categoryHandler = (value) => {
-    setSearchData(value);
+  const filterHandler = (value) => {
+    setFilteredData(value);
   };
 
   const productContext = {
@@ -126,9 +119,8 @@ const ProductProvider = (props) => {
     submitProduct: addProductHandler,
     editedProduct: editedProductHandler,
 
-    searchedProducts: searchData,
-    searchProducts: searchProductHandler,
-    categoryProducts: categoryHandler,
+    filteredProducts: filteredData,
+    filterHandler: filterHandler,
 
     cartItems: cartState.cartItems,
     totalAmount: cartState.totalAmount,

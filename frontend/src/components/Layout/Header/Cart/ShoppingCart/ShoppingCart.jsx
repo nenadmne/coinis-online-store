@@ -4,12 +4,11 @@ import ProductContext from "../../../../../store/product-context";
 import PayOptions from "./PayOptions/PayOptions";
 import Summary from "./Summary/Summary";
 import CartItem from "./CartItem/CartItem";
-import { Box } from "@mui/material";
 import "./ShoppingCart.css";
 
 export default function ShopingCart() {
-  const cartCtx = useContext(ProductContext);
-  const { cartItems } = cartCtx;
+  const prodCtx = useContext(ProductContext);
+  const { cartItems } = prodCtx;
   const totalQuantity = cartItems.reduce(
     (total, cartItem) => total + cartItem.amount,
     0

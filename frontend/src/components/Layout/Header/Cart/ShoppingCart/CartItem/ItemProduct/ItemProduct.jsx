@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import CartContext from "../../../../../../../store/product-context";
+import ProductContext from "../../../../../../../store/product-context";
 import Icon from "../../../../ProfileButtons/Buttons/Icon/Icon";
 import "./ItemProduct.css";
 
 export default function ItemProduct({ item }) {
-  const cartCtx = useContext(CartContext);
-  const { cartItems, removeItem } = cartCtx;
+  const prodCtx = useContext(ProductContext);
+  const { cartItems, removeItem } = prodCtx;
 
   const amount = cartItems
     .filter((prod) => prod.id === item.id)

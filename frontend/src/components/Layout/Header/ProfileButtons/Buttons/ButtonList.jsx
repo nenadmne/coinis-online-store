@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import CartContext from "../../../../../store/product-context";
+import ProductContext from "../../../../../store/product-context";
 import CartModal from "../.././Cart/CartModal";
 import Icon from ".././Buttons/Icon/Icon";
 import InboxModal from "../../Inbox/InboxModal";
@@ -19,8 +19,9 @@ export default function ButtonList({ handleOpenUserMenu }) {
   const handleOrdersOpen = () => setOrdersOpen(true);
   const handleOrdersClose = () => setOrdersOpen(false);
 
-  const cartCtx = useContext(CartContext);
-  const productQuantity = cartCtx.cartItems.reduce((accumulator, item) => {
+  const prodCtx = useContext(ProductContext);
+  const { cartItems } = prodCtx;
+  const productQuantity = cartItems.reduce((accumulator, item) => {
     return accumulator + item.amount;
   }, 0);
 
