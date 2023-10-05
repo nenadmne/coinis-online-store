@@ -6,7 +6,7 @@ import Summary from "./Summary/Summary";
 import CartItem from "./CartItem/CartItem";
 import "./ShoppingCart.css";
 
-export default function ShopingCart() {
+export default function ShopingCart({handleClose}) {
   const prodCtx = useContext(ProductContext);
   const { cartItems } = prodCtx;
   const totalQuantity = cartItems.reduce(
@@ -19,7 +19,7 @@ export default function ShopingCart() {
       <div className="left-column">
         {cartItems.length > 0 && (
           <div className="cart-item-box">
-            <h2 className="cart-amount">Cart - {totalQuantity}</h2>
+            <h2 className="cart-amount">Cart - {totalQuantity} products</h2>
             <div className="cart-item-list">
               {cartItems.map((item) => (
                 <CartItem key={item.id} item={item} />
@@ -29,7 +29,7 @@ export default function ShopingCart() {
         )}
         <PayOptions />
       </div>
-      <Summary />
+      <Summary handleClose={handleClose}/>
     </section>
   );
 }

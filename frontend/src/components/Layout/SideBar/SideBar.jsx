@@ -82,8 +82,9 @@ export default function SideBar({ sideBarOpened, toggleSideBar }) {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      className="drawer-box"
     >
-      <List>
+      <List className="drawer-list">
         {categoriesToMap !== null &&
           categoriesToMap.map((item, index) => (
             <ListItem key={index} disablePadding>
@@ -102,7 +103,6 @@ export default function SideBar({ sideBarOpened, toggleSideBar }) {
       anchor="left"
       open={state["left"]}
       onClose={toggleDrawer("left", false)}
-      className="sidebar"
     >
       {list("left")}
     </Drawer>

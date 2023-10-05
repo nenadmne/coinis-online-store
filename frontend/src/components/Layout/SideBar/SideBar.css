@@ -1,11 +1,27 @@
-.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-  margin-top: 89px;
-}
+  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    display: flex;
+    margin-top: 56px;
+    width: 210.33px;
+  }
 
-.MuiDrawer-paperAnchorLeft.css-4t3x6l-MuiPaper-root-MuiDrawer-paper ul {
-  padding: 0;
-}
+  .drawer-box {
+    width: 100% !important;
+  }
+  .drawer-list {
+    padding: 0;
+    width: 100%;
+  }
 
-.css-h4y409-MuiList-root {
-  width: 100%;
-}
+  @media (min-width: 768px) {
+    .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+      margin-top: 63.02px;
+      width: 214.38px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+      margin-top: 82.52px;
+      width: 262.38px;
+    }
+  }

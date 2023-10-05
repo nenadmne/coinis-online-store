@@ -47,6 +47,14 @@ ul {
   margin: 0;
 }
 
+.btn.btn-app {
+  margin: 0;
+  padding: 0.5rem;
+  height: 3rem;
+  width: 3rem;
+  color: var(--black);
+}
+
 @media (min-width: 768px) {
   main {
     padding: 2rem;

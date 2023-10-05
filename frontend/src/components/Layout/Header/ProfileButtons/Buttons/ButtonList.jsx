@@ -30,19 +30,22 @@ export default function ButtonList({ handleOpenUserMenu }) {
       <CartModal open={cartOpen} handleClose={handleCartClose} />
       <InboxModal open={inboxOpen} handleClose={handleInboxClose} />
       <OrdersModal open={ordersOpen} handleClose={handleOrdersClose} />
-      <Icon
-        onClick={handleOrdersOpen}
-        spanClass="badge bg-teal"
-        quantity="67"
-        iClass="fas fa-inbox"
-      />
-
-      <Icon
-        onClick={handleInboxOpen}
-        spanClass="badge bg-info"
-        quantity="12"
-        iClass="fas fa-envelope"
-      />
+      {window.innerWidth >= 768 && (
+        <Icon
+          onClick={handleOrdersOpen}
+          spanClass="badge bg-teal"
+          quantity="67"
+          iClass="fas fa-inbox"
+        />
+      )}
+      {window.innerWidth >= 768 && (
+        <Icon
+          onClick={handleInboxOpen}
+          spanClass="badge bg-info"
+          quantity="12"
+          iClass="fas fa-envelope"
+        />
+      )}
       <Icon
         onClick={handleCartOpen}
         spanClass="badge bg-info"

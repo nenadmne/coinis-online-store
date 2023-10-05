@@ -1,101 +1,20 @@
 .nav-bar-wrapper {
-  max-width: 375px;
+  display: flex;
   overflow: hidden;
+  position: sticky !important;
+  flex-direction: row !important;
+  padding: 0;
 }
 
-.profile-div {
-  width: 100%;
-  overflow: hidden;
-}
-
-.icon-wrapper {
-  width: 100%;
-}
-
-.pages-div {
+.nav-bar-toolbar {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
-  margin-left: 2rem;
-}
-
-.avatar {
-  width: 2.25rem !important;
-  height: 2.25rem !important;
-}
-
-.logo-div img {
-  width: 2rem;
-  background-color: var(--white);
-  border-radius: 0.25rem;
-  margin-left: 1rem;
-}
-
-.logo-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
-  margin-right: 2rem;
+  justify-content: space-between;
   width: 100%;
-  height: 89px;
-}
-
-.logo-div:hover {
-  background-color: var(--green-darkish);
-  color: var(--white);
-}
-
-.btn.btn-app {
-  margin: 0;
-  padding: 0.5rem;
-  height: 3rem;
-  width: 3rem;
-  color: var(--black);
 }
 
 @media (min-width: 768px) {
-  .profile-div svg {
-    font-size: 3rem;
-  }
+}
 
-  .nav-bar-wrapper {
-    max-width: unset;
-  }
-
-  .profile-div {
-    width: unset;
-  }
-
-  .icon-wrapper {
-    width: 100%;
-  }
-
-  .avatar {
-    width: 3rem !important;
-    height: 3rem !important;
-  }
-
-  .profile-div {
-    gap: 1.25rem;
-  }
-
-  .logo-div {
-    width: unset;
-  }
-
-  .badge span {
-    transform: translateX(0.5rem);
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-    padding: 0.25rem;
-    background-color: var(--red);
-    font-weight: 700;
-  }
-
-  .logo-div img {
-    width: 3rem;
-    border-radius: 1rem;
-  }
+@media (min-width: 1024px) {
 }

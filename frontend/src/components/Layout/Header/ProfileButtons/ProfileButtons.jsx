@@ -21,7 +21,7 @@ export default function ProfileButtons() {
   };
 
   return (
-    <Box className="profile-div" sx={{ flexGrow: 0, p: "1rem" }}>
+    <Box className="profile-div" sx={{ p: "1rem" }}>
       <ButtonList handleOpenUserMenu={handleOpenUserMenu} />
       <ProfileMenu
         handleCloseUserMenu={handleCloseUserMenu}

@@ -1,0 +1,133 @@
+.logo-and-pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.logo-and-pages button {
+  color: var(--white);
+  display: flex;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+  border: 1px solid var(--white);
+  box-shadow: 1px 1px 1px var(--grey);
+  height: fit-content;
+  align-self: center;
+}
+
+.logo-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  height: fit-content;
+  font-size: 1.25rem !important;
+  color: inherit;
+  text-decoration: none;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+}
+
+.logo-div img {
+  width: 2rem;
+  border-radius: 0.25rem;
+  background-color: var(--grey);
+  margin: 0 0.5rem;
+}
+
+.pages-div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: 2rem;
+  white-space: noWrap;
+}
+
+.drawer {
+  min-width: unset !important;
+  padding: 0rem !important;
+  width: 2.5rem !important;
+  margin: 0.5rem !important;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+}
+
+@media (min-width: 768px) {
+  .logo-and-pages {
+    justify-content: left;
+  }
+  .logo-and-pages button {
+    font-size: 0.7rem;
+    letter-spacing: unset;
+    height: 2rem;
+    flex-grow: unset;
+    justify-content: unset;
+  }
+
+  .logo-div {
+    justify-content: left;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary);
+    border-radius: 0;
+  }
+
+  .logo-div:hover {
+    background-color: var(--green-darkish);
+    color: var(--white);
+  }
+
+  .logo-div img {
+    background-color: var(--white);
+    margin-left: 1rem;
+  }
+
+  .pages-div {
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-and-pages button {
+    font-size: 0.9rem;
+    letter-spacing: 0.2rem;
+    height: 2.25rem;
+  }
+
+  .logo-div {
+    margin-right: 2rem;
+    height: fit-content;
+    font-size: 1.5rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .logo-div img {
+    width: 3rem;
+    border-radius: 0.25rem;
+    margin-left: 1rem;
+  }
+
+  .pages-div {
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .icon-wrapper {
+    gap: 1.5rem;
+  }
+}

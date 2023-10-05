@@ -10,6 +10,10 @@
   gap: 1rem;
   width: 375px;
   min-width: 375px;
+  height: fit-content;
+  overflow: hidden;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .cart-item-list {
@@ -17,9 +21,6 @@
   flex-direction: column;
   background-color: var(--white);
   height: fit-content;
-  max-height: 200px;
-  overflow: hidden;
-  overflow-y: auto;
   border-radius: 0.25rem;
   width: 100%;
 }
@@ -30,6 +31,7 @@
   gap: 1rem;
   border-radius: 0.25rem;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 .cart-amount {
@@ -56,6 +58,11 @@
   }
   .cart-item-list {
     width: fit-content;
+    max-height: 400px;
+  }
+  .left-column {
+    overflow: unset;
+    overflow-y: unset;
   }
 }
 

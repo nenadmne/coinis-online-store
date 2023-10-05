@@ -2,25 +2,49 @@
   display: flex;
   flex-direction: row;
   width: fit-content;
-  gap: 1.25rem;
+  gap: 1rem;
 }
-.profile-div {
-  padding-right: 2rem !important;
-}
-.profile-div button {
+
+.icon-wrapper button {
   width: 3rem;
   height: 2rem;
   padding: 0;
 }
-.profile-div a {
+.icon-wrapper a {
   min-width: 3rem;
-  height: 2.25rem !important;
+  height: 2rem !important;
   padding: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.profile-div i {
+.icon-wrapper i {
   font-size: 1.25rem !important;
+}
+
+@media (min-width: 768px) {
+  .icon-wrapper {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon-wrapper {
+    gap: 1.25rem;
+  }
+  .icon-wrapper button {
+    width: 4rem;
+    height: 2.25rem;
+  }
+  .icon-wrapper a {
+    min-width: 4rem;
+    height: 2.25rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .icon-wrapper {
+    gap: 1.5rem;
+  }
 }

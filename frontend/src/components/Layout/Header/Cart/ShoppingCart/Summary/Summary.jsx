@@ -3,7 +3,7 @@ import ProductContext from "../../../../../../store/product-context";
 import Button from "../../../../../../UI/Button";
 import "./Summary.css";
 
-export default function Summary() {
+export default function Summary({handleClose}) {
   const prodCtx = useContext(ProductContext);
   const { totalAmount, cartItems } = prodCtx;
 
@@ -37,7 +37,11 @@ export default function Summary() {
         <Button className="confirm-btn" name="Confirm order" />
       )}
       {isMobile && (
-        <Button className="confirm-btn cancel" name="Cancel order" />
+        <Button
+          function={handleClose}
+          className="confirm-btn cancel"
+          name="Cancel order"
+        />
       )}
     </div>
   );

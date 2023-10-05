@@ -8,13 +8,15 @@ import "./NavBar.css";
 function NavBar({ toggleSideBar, footerRef }) {
   return (
     <AppBar
-      position="sticky"
-      display="flex"
-      sx={{ backgroundColor: "var(--secondary)", padding: "0" }}
+      sx={{ backgroundColor: "var(--secondary)" }}
       className="nav-bar-wrapper"
     >
-      <Container maxWidth="100%" sx={{ padding: "0px !important" }}>
-        <Toolbar disableGutters>
+      <Container
+        className="nav-bar"
+        maxWidth="100vw"
+        sx={{ padding: "0 !important" }}
+      >
+        <Toolbar disableGutters className="nav-bar-toolbar">
           <LogoAndButtons toggleSideBar={toggleSideBar} footerRef={footerRef} />
           <ProfileButtons />
         </Toolbar>
