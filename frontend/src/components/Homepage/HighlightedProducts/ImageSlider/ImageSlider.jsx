@@ -121,12 +121,12 @@ const ImageSlider = () => {
     }
   }
   const visibleItems = getVisibleItems();
-  
+
   return (
     <div className="image-slider-wrapper" ref={imageSliderWrapperRef}>
       <div className="displayed-products">
         {visibleItems.map((item) => (
-          <ProductItem key={item.id} item={item} />
+          <ProductItem key={item.id} item={item} autoSlideRight={autoSlideRight}/>
         ))}
       </div>
       <SliderArrows

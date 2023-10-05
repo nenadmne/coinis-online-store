@@ -10,7 +10,7 @@ const ProductList = ({ counterHandler }) => {
   const [itemsToShow, setItemsToShow] = useState(6);
 
   const handleShowMore = () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 1024) {
       setItemsToShow((prevItems) => prevItems + 6);
     } else if (window.innerWidth >= 1024 && window.innerWidth < 1200) {
       setItemsToShow((prevItems) => prevItems + 8);
@@ -25,7 +25,7 @@ const ProductList = ({ counterHandler }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth < 1024) {
         setItemsToShow(6);
       } else if (window.innerWidth >= 1024 && window.innerWidth < 1200) {
         setItemsToShow(8);

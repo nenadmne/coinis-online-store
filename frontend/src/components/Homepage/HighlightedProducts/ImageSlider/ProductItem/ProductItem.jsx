@@ -5,7 +5,7 @@ import Card from "../../../../../UI/Card";
 import Button from "../../../../../UI/Button";
 import "./ProductItem.css";
 
-const ProductItem = ({ item }) => {
+const ProductItem = ({ item, autoSlideRight }) => {
   const prodCtx = useContext(ProductContext);
   const { addItem } = prodCtx;
 
@@ -20,7 +20,7 @@ const ProductItem = ({ item }) => {
   };
 
   return (
-    <Card className="item-wrapper">
+    <Card className={autoSlideRight ? "item-wrapper right" : "item-wrapper left"}>
       <Link to={`/details/${item.slug}`}>
         <img src={item.thumbnail} />
       </Link>
