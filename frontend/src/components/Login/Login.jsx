@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import useInput from "../../hooks/use-input";
 import "./Login.css";
 
 function Copyright(props) {
@@ -32,13 +33,41 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
+  const {
+    enteredValue: enteredEmail,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    onChangeHandler: changeEmailHandler,
+    onBlurHandler: blurEmailHandler,
+  } = useInput((enteredEmail) => enteredEmail.trim().length > 0);
+
+  const {
+    enteredValue: enteredPassword,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    onChangeHandler: changePasswordHandler,
+    onBlurHandler: blurPasswordHandler,
+  } = useInput((enteredPassword) => enteredPassword.trim().length > 0);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    if (passwordIsValid && emailIsValid) {
+      const data = {
+        email: enteredEmail,
+        password: enteredPassword,
+      };
+      console.log(data);
+    }
+  };
+
+  const getInputClasses = (isValid, hasError) => {
+    if (hasError) {
+      return "form-control is-invalid";
+    } else if (isValid) {
+      return "form-control is-valid";
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -93,19 +122,31 @@ export default function Login() {
             >
               <TextField
                 margin="normal"
-                fullWidth
                 label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={enteredEmail}
+                onChange={changeEmailHandler}
+                onBlur={blurEmailHandler}
+                className={`login-form-input ${getInputClasses(
+                  emailIsValid,
+                  emailHasError
+                )}`}
               />
               <TextField
                 margin="normal"
-                fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 autoComplete="current-password"
+                value={enteredPassword}
+                onChange={changePasswordHandler}
+                onBlur={blurPasswordHandler}
+                className={`login-form-input ${getInputClasses(
+                  passwordIsValid,
+                  passwordHasError
+                )}`}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -116,6 +157,7 @@ export default function Login() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                disabled={!emailIsValid || !passwordIsValid}
               >
                 Sign In
               </Button>

@@ -14,8 +14,19 @@
   justify-content: center;
 }
 
+.login-form-input,
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  width: calc(100vw - 2rem) !important;
+  min-width: 311px !important;
+  max-width: 450px !important;
+}
+
 .login-form-box {
   max-width: 450px;
+}
+
+.login-form-input {
+  margin: 1rem 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -25,6 +36,11 @@
     flex-basis: 50% !important;
     max-width: unset !important;
   }
+  .login-form-input,
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: calc(50vw - 4rem) !important;
+    max-width: 450px !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -33,5 +49,9 @@
   }
   .login-form-wrapper {
     flex-basis: 40% !important;
+  }
+  .login-form-input,
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: calc(40vw - 4rem) !important;
   }
 }
