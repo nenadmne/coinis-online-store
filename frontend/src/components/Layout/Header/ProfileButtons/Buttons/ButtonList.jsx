@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import ProductContext from "../../../../../store/product-context";
 import CartModal from "../.././Cart/CartModal";
@@ -11,6 +11,8 @@ import Button from "../../../../../UI/Button";
 export default function ButtonList({ handleOpenUserMenu }) {
   const adminToken = localStorage.getItem("adminToken");
   const userToken = localStorage.getItem("userToken");
+  const [bump, setBump] = useState(false);
+
   const [cartOpen, setCartOpen] = useState(false);
   const handleCartOpen = () => setCartOpen(true);
   const handleCartClose = () => setCartOpen(false);
@@ -28,6 +30,16 @@ export default function ButtonList({ handleOpenUserMenu }) {
   const productQuantity = cartItems.reduce((accumulator, item) => {
     return accumulator + item.amount;
   }, 0);
+
+  useEffect(() => {
+    if (productQuantity > 0) {
+      setBump(true);
+      const timeout = setTimeout(() => {
+        setBump(false);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [productQuantity]);
 
   return (
     <div className="icon-wrapper">
@@ -57,7 +69,7 @@ export default function ButtonList({ handleOpenUserMenu }) {
             <>
               <Icon
                 onClick={handleCartOpen}
-                spanClass="badge bg-info"
+                spanClass={`badge bg-info ${bump ? "bump" : ""}`}
                 quantity={productQuantity}
                 iClass="fas fa-shopping-cart"
               />

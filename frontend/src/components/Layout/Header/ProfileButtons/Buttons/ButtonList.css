@@ -37,6 +37,11 @@
   font-size: 0.8rem;
 }
 
+.bump {
+  transform: scale(2); 
+  transition: transform 0.3s ease-in-out;
+}
+
 @media (min-width: 768px) {
   .icon-wrapper {
     gap: 1rem;

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -43,11 +42,11 @@ export default function Login() {
     if (enteredUsername.toLowerCase() === "admin") {
       localStorage.setItem("adminToken", adminToken);
       toast.success("Login successful!");
-      return navigate("/admin");
+      return window.location.href=("/admin");
     } else if (enteredUsername.toLowerCase() === "user") {
       localStorage.setItem("userToken", userToken);
       toast.success("Login successful!");
-      return navigate("/");
+      return window.location.href=("/");
     } else return;
   };
 

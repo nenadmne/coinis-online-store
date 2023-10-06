@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import ProductContext from "../../../../store/product-context";
+import { toast } from "react-toastify";
 import getCategories from "../../../../api/apiCalls/getCategories";
 import getBrands from "../../../../api/apiCalls/getBrands";
 import Box from "@mui/material/Box";
@@ -117,6 +118,7 @@ export default function EditProduct({ open, handleClose, product }) {
       if (validationCheck) {
         await editProduct(itemInfo.slug, item);
         handleClose();
+        toast.success("Product edited successfully!");
       }
     } catch (error) {
       console.error("Error adding product:", error);

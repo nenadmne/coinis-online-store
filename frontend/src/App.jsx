@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout/Layout";
 import Login from "./components/Login/Login";
 import Homepage from "./components/Homepage/HomePage";

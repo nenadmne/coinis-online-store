@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import ProductContext from "../../../../store/product-context";
 import useInput from "../../../../hooks/use-input";
+import { toast } from "react-toastify";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "../../../../UI/Button";
@@ -145,7 +146,8 @@ export default function AddProduct({ open, handleClose }) {
     } catch (error) {
       console.error("Error adding product:", error);
     }
-    submitProduct(item)
+    submitProduct(item);
+    toast.success("Product added successfully!");
   };
 
   const getInputClasses = (isValid, hasError) => {

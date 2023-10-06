@@ -1,13 +1,22 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import ProductContext from "../../../../../../store/product-context";
 import Button from "../../../../../../UI/Button";
 import "./Summary.css";
 
-export default function Summary({handleClose}) {
+export default function Summary({ handleClose }) {
   const prodCtx = useContext(ProductContext);
-  const { totalAmount, cartItems } = prodCtx;
+  const { totalAmount, cartItems, removeItem } = prodCtx;
 
   const isMobile = window.innerWidth < 768;
+
+  const submitHandler = () => {
+    cartItems.forEach((item) => {
+      removeItem(item.id);
+    });
+    handleClose()
+    toast.success("Order confirmed successfully!");
+  };
 
   return (
     <div className="summary-wrapper">
@@ -34,7 +43,11 @@ export default function Summary({handleClose}) {
         </div>
       </div>
       {cartItems.length > 0 && (
-        <Button className="confirm-btn" name="Confirm order" />
+        <Button
+          className="confirm-btn"
+          function={submitHandler}
+          name="Confirm order"
+        />
       )}
       {isMobile && (
         <Button
