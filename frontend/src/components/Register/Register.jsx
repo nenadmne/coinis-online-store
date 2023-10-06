@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useInput from "../../hooks/use-input";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -13,16 +13,17 @@ import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Copyright from "../../UI/Copyrights";
-import getInputClasses from "../../UI/GetInputClass";
 import "./Register.css";
+import signUp from "../../api/apiCalls/signUp";
 
 const defaultTheme = createTheme();
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const {
     enteredValue: enteredName,
     isValid: nameIsValid,
-    hasError: nameHasError,
     onChangeHandler: changeNameHandler,
     onBlurHandler: blurNameHandler,
   } = useInput((enteredName) => enteredName.trim().length > 0);
@@ -30,7 +31,6 @@ export default function Register() {
   const {
     enteredValue: enteredUsername,
     isValid: usernameIsValid,
-    hasError: usernameHasError,
     onChangeHandler: changeUsernameHandler,
     onBlurHandler: blurUsernameHandler,
   } = useInput((enteredUsername) => enteredUsername.trim().length > 0);
@@ -38,7 +38,6 @@ export default function Register() {
   const {
     enteredValue: enteredEmail,
     isValid: emailIsValid,
-    hasError: emailHasError,
     onChangeHandler: changeEmailHandler,
     onBlurHandler: blurEmailHandler,
   } = useInput((enteredEmail) => enteredEmail.trim().length > 0);
@@ -46,27 +45,26 @@ export default function Register() {
   const {
     enteredValue: enteredPassword,
     isValid: passwordIsValid,
-    hasError: passwordHasError,
     onChangeHandler: changePasswordHandler,
     onBlurHandler: blurPasswordHandler,
   } = useInput((enteredPassword) => enteredPassword.trim().length > 0);
 
   const {
     enteredValue: enteredRepeatedPassword,
-    isValid: repeatedPasswordIsValid,
-    hasError: repeatedPasswordHasError,
     onChangeHandler: changeRepeatedPasswordHandler,
     onBlurHandler: blurRepeatedPasswordHandler,
   } = useInput(
     (enteredRepeatedPassword) => enteredRepeatedPassword.trim().length > 0
   );
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-      email: data.get("email"),
-      password: data.get("password"),
+      name: enteredName,
+      username: enteredUsername,
+      password: enteredPassword,
     };
+    await signUp(data);
   };
 
   return (
@@ -74,6 +72,9 @@ export default function Register() {
       <Grid container sx={{ height: "100vh" }} className="register-wrapper">
         <CssBaseline />
         <Grid
+          onClick={() => {
+            navigate("/");
+          }}
           className="register-image-wrapper"
           item
           xs={false}
@@ -116,37 +117,30 @@ export default function Register() {
                   Sign up
                 </Typography>
                 <Box
+                  className="form-box"
                   component="form"
                   noValidate
                   onSubmit={handleSubmit}
                   sx={{ mt: 3 }}
                 >
                   <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid className="input-grid" item xs={12}>
                       <TextField
                         name="firstName"
                         label="Name"
                         value={enteredName}
                         onChange={changeNameHandler}
                         onBlur={blurNameHandler}
-                        className={`register-form-input ${getInputClasses(
-                          nameIsValid,
-                          nameHasError
-                        )}`}
                         autoFocus
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid className="input-grid" item xs={12}>
                       <TextField
                         label="Username"
                         name="username"
                         value={enteredUsername}
                         onChange={changeUsernameHandler}
                         onBlur={blurUsernameHandler}
-                        className={`register-form-input ${getInputClasses(
-                          usernameIsValid,
-                          usernameHasError
-                        )}`}
                       />
                     </Grid>
                     <Grid item xs={12}>
@@ -156,30 +150,23 @@ export default function Register() {
                         value={enteredEmail}
                         onChange={changeEmailHandler}
                         onBlur={blurEmailHandler}
-                        className={`register-form-input ${getInputClasses(
-                          emailIsValid,
-                          emailHasError
-                        )}`}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField fullWidth label="Country" name="country" />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid className="input-grid" item xs={12}>
                       <TextField
+                        aria-invalid="true"
                         name="password"
                         label="Password"
                         type="password"
                         value={enteredPassword}
                         onChange={changePasswordHandler}
                         onBlur={blurPasswordHandler}
-                        className={`register-form-input ${getInputClasses(
-                          passwordIsValid,
-                          passwordHasError
-                        )}`}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid className="input-grid" item xs={12}>
                       <TextField
                         name="confirm-password"
                         label="Confirm password"
@@ -187,10 +174,6 @@ export default function Register() {
                         value={enteredRepeatedPassword}
                         onChange={changeRepeatedPasswordHandler}
                         onBlur={blurRepeatedPasswordHandler}
-                        className={`register-form-input ${getInputClasses(
-                          repeatedPasswordIsValid,
-                          repeatedPasswordHasError
-                        )}`}
                       />
                     </Grid>
                     <Grid item xs={12}></Grid>
@@ -200,6 +183,12 @@ export default function Register() {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    disabled={
+                      !nameIsValid ||
+                      !usernameIsValid ||
+                      !passwordIsValid ||
+                      enteredPassword !== enteredRepeatedPassword
+                    }
                   >
                     Sign Up
                   </Button>

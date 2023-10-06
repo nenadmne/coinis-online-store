@@ -10,6 +10,7 @@
   height: 2rem;
   padding: 0;
 }
+
 .icon-wrapper a {
   min-width: 3rem;
   height: 2rem !important;
@@ -23,9 +24,32 @@
   font-size: 1.25rem !important;
 }
 
+.btn-div {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+.btn-div button {
+  padding: 0 0.5rem;
+  width: 4rem;
+  font-size: 0.8rem;
+}
+
 @media (min-width: 768px) {
   .icon-wrapper {
     gap: 1rem;
+  }
+
+  .btn-div {
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .btn-div button {
+    padding: 0 0.5rem;
+    width: 5rem;
   }
 }
 
@@ -36,6 +60,10 @@
   .icon-wrapper button {
     width: 4rem;
     height: 2.25rem;
+  }
+  .btn-div button {
+    width: 6rem;
+    font-size: 1rem;
   }
   .icon-wrapper a {
     min-width: 4rem;

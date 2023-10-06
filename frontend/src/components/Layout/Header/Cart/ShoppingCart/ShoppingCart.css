@@ -59,6 +59,8 @@
   .cart-item-list {
     width: fit-content;
     max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
   }
   .left-column {
     overflow: unset;

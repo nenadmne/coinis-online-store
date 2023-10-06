@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Box } from "@mui/material";
 import ProfileMenu from "./Menu/ProfileMenu";
 import ButtonList from "./Buttons/ButtonList";
@@ -13,6 +15,12 @@ export default function ProfileButtons() {
     setAnchorElUser(null);
     if (page === "Profile") {
       navigate("/profile");
+    }
+    if (page === "Logout") {
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("userToken");
+      toast("Succesffully logged out!")
+      navigate("/");
     }
   };
 

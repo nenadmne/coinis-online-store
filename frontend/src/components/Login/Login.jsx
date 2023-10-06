@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,37 +16,39 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useInput from "../../hooks/use-input";
 import Copyright from "../../UI/Copyrights";
-import getInputClasses from "../../UI/GetInputClass";
 import "./Login.css";
 
 const defaultTheme = createTheme();
 
 export default function Login() {
+  const adminToken = "admin verification";
+  const userToken = "user verification";
+  const navigate = useNavigate();
   const {
-    enteredValue: enteredEmail,
-    isValid: emailIsValid,
-    hasError: emailHasError,
-    onChangeHandler: changeEmailHandler,
-    onBlurHandler: blurEmailHandler,
-  } = useInput((enteredEmail) => enteredEmail.trim().length > 0);
+    enteredValue: enteredUsername,
+    isValid: usernameIsValid,
+    onChangeHandler: changeUsernameHandler,
+    onBlurHandler: blurUsernameHandler,
+  } = useInput((enteredUsername) => enteredUsername.trim().length > 0);
 
   const {
     enteredValue: enteredPassword,
     isValid: passwordIsValid,
-    hasError: passwordHasError,
     onChangeHandler: changePasswordHandler,
     onBlurHandler: blurPasswordHandler,
   } = useInput((enteredPassword) => enteredPassword.trim().length > 0);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (passwordIsValid && emailIsValid) {
-      const data = {
-        email: enteredEmail,
-        password: enteredPassword,
-      };
-      console.log(data);
-    }
+    if (enteredUsername.toLowerCase() === "admin") {
+      localStorage.setItem("adminToken", adminToken);
+      toast.success("Login successful!");
+      return navigate("/admin");
+    } else if (enteredUsername.toLowerCase() === "user") {
+      localStorage.setItem("userToken", userToken);
+      toast.success("Login successful!");
+      return navigate("/");
+    } else return;
   };
 
   return (
@@ -52,6 +56,9 @@ export default function Login() {
       <Grid container className="login-wrapper" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
+          onClick={() => {
+            navigate("/");
+          }}
           className="login-image-wrapper"
           item
           xs={false}
@@ -65,6 +72,7 @@ export default function Login() {
             backgroundPosition: "center",
           }}
         />
+
         <Grid
           item
           xs={12}
@@ -99,17 +107,13 @@ export default function Login() {
             >
               <TextField
                 margin="normal"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                label="Username"
+                name="username"
+                autoComplete="username"
                 autoFocus
-                value={enteredEmail}
-                onChange={changeEmailHandler}
-                onBlur={blurEmailHandler}
-                className={`login-form-input ${getInputClasses(
-                  emailIsValid,
-                  emailHasError
-                )}`}
+                value={enteredUsername}
+                onChange={changeUsernameHandler}
+                onBlur={blurUsernameHandler}
               />
               <TextField
                 margin="normal"
@@ -120,10 +124,6 @@ export default function Login() {
                 value={enteredPassword}
                 onChange={changePasswordHandler}
                 onBlur={blurPasswordHandler}
-                className={`login-form-input ${getInputClasses(
-                  passwordIsValid,
-                  passwordHasError
-                )}`}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -134,7 +134,7 @@ export default function Login() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                disabled={!emailIsValid || !passwordIsValid}
+                disabled={!usernameIsValid || !passwordIsValid}
               >
                 Sign In
               </Button>

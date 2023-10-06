@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Layout from "./components/Layout/Layout";
 import Login from "./components/Login/Login";
 import Homepage from "./components/Homepage/HomePage";
@@ -9,6 +10,8 @@ import CartProvider from "./store/CartProvider";
 import Register from "./components/Register/Register";
 
 function App() {
+  const adminToken = localStorage.getItem("adminToken");
+  const userToken = localStorage.getItem("userToken");
   const router = createBrowserRouter([
     {
       path: "/",
@@ -16,8 +19,14 @@ function App() {
       children: [
         { path: "/", element: <Homepage /> },
         { path: "/details/:slug", element: <ProductDetails /> },
-        { path: "/profile", element: <UserProfile /> },
-        { path: "/admin", element: <Admin /> },
+        {
+          path: "/profile",
+          element: userToken ? <UserProfile /> : <Homepage />,
+        },
+        {
+          path: "/admin",
+          element: adminToken ? <Admin /> : <Homepage />,
+        },
       ],
     },
     {
@@ -33,6 +42,7 @@ function App() {
   return (
     <CartProvider>
       <RouterProvider router={router} />
+      <ToastContainer />
     </CartProvider>
   );
 }

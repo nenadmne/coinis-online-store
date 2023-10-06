@@ -3,9 +3,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import "./ProfileMenu.css";
 
-const settings = ["Profile", "Logout"];
+const adminToken = localStorage.getItem("adminToken");
+const userToken = localStorage.getItem("userToken");
 
 export default function ProfileMenu({ handleCloseUserMenu, anchorElUser }) {
+  const userSettings = ["Profile", "Logout"];
+  const adminSettings = ["Logout"];
+
   return (
     <Menu
       sx={{ mt: "3rem" }}
@@ -23,11 +27,19 @@ export default function ProfileMenu({ handleCloseUserMenu, anchorElUser }) {
       open={Boolean(anchorElUser)}
       onClose={handleCloseUserMenu}
     >
-      {settings.map((item) => (
-        <MenuItem key={item} onClick={() => handleCloseUserMenu(item)}>
-          <Typography textAlign="center">{item}</Typography>
-        </MenuItem>
-      ))}
+      {userToken
+        ? userSettings.map((item) => (
+            <MenuItem key={item} onClick={() => handleCloseUserMenu(item)}>
+              <Typography textAlign="center">{item}</Typography>
+            </MenuItem>
+          ))
+        : adminToken
+        ? adminSettings.map((item) => (
+            <MenuItem key={item} onClick={() => handleCloseUserMenu(item)}>
+              <Typography textAlign="center">{item}</Typography>
+            </MenuItem>
+          ))
+        : null}
     </Menu>
   );
 }

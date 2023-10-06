@@ -3,9 +3,15 @@
   display: flex;
   justify-content: center;
 }
+
 .register-image-wrapper {
   flex-basis: 0% !important;
 }
+
+.register-image-wrapper:hover {
+  cursor: pointer;
+}
+
 .register-form-wrapper {
   flex-basis: 100% !important;
   max-width: unset !important;

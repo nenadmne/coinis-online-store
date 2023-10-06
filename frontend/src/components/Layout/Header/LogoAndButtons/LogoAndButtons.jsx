@@ -8,6 +8,7 @@ import "./LogoAndButtons.css";
 const pages = ["Products", "About us", "Support"];
 
 export default function LogoAndButtons({ toggleSideBar, footerRef }) {
+  const adminToken = localStorage.getItem("adminToken");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {

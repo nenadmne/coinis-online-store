@@ -6,6 +6,10 @@
 .login-image-wrapper {
   flex-basis: 0% !important;
 }
+
+.login-image-wrapper:hover {
+  cursor: pointer;
+}
 .login-form-wrapper {
   flex-basis: 100% !important;
   width: 100%;

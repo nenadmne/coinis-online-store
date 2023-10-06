@@ -3,7 +3,7 @@ import api from "../api";
 export default async function filterProduct(minValue, maxValue, order) {
   try {
     const response = await api.get(
-      `filter/?low=${minValue}&high=${maxValue}&ordered=${order}`
+      `/products/filter/?low=${minValue}&high=${maxValue}&ordered=${order}`
     );
     return response.data;
   } catch (error) {
