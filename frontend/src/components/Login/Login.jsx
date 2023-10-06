@@ -13,22 +13,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useInput from "../../hooks/use-input";
+import Copyright from "../../UI/Copyrights";
+import getInputClasses from "../../UI/GetInputClass";
 import "./Login.css";
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const defaultTheme = createTheme();
 
@@ -57,16 +44,6 @@ export default function Login() {
         password: enteredPassword,
       };
       console.log(data);
-    }
-  };
-
-  const getInputClasses = (isValid, hasError) => {
-    if (hasError) {
-      return "form-control is-invalid";
-    } else if (isValid) {
-      return "form-control is-valid";
-    } else {
-      return "";
     }
   };
 

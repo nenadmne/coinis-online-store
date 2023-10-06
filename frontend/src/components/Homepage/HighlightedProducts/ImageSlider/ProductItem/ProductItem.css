@@ -82,6 +82,10 @@
   .item-wrapper strong {
     font-size: 1.25rem;
   }
+
+  .item-wrapper button {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1024px) {

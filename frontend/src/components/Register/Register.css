@@ -16,12 +16,29 @@
   max-width: 450px;
 }
 
+.register-form-input,
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  width: calc(100vw - 2rem) !important;
+  min-width: 311px !important;
+  max-width: 450px !important;
+}
+
+.register-form-input {
+  margin: 1rem 0 !important;
+}
+
 @media (min-width: 768px) {
   .register-image-wrapper,
   .register-form-wrapper {
     display: flex;
     flex-basis: 50% !important;
     max-width: unset !important;
+  }
+
+  .register-form-input,
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: calc(50vw - 4rem) !important;
+    max-width: 450px !important;
   }
 }
 
@@ -31,5 +48,9 @@
   }
   .register-form-wrapper {
     flex-basis: 40% !important;
+  }
+  .register-form-input,
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: calc(40vw - 4rem) !important;
   }
 }

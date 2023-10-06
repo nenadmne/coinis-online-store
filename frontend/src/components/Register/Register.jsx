@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import useInput from "../../hooks/use-input";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,33 +12,61 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Copyright from "../../UI/Copyrights";
+import getInputClasses from "../../UI/GetInputClass";
 import "./Register.css";
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const defaultTheme = createTheme();
 
 export default function Register() {
+  const {
+    enteredValue: enteredName,
+    isValid: nameIsValid,
+    hasError: nameHasError,
+    onChangeHandler: changeNameHandler,
+    onBlurHandler: blurNameHandler,
+  } = useInput((enteredName) => enteredName.trim().length > 0);
+
+  const {
+    enteredValue: enteredUsername,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
+    onChangeHandler: changeUsernameHandler,
+    onBlurHandler: blurUsernameHandler,
+  } = useInput((enteredUsername) => enteredUsername.trim().length > 0);
+
+  const {
+    enteredValue: enteredEmail,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    onChangeHandler: changeEmailHandler,
+    onBlurHandler: blurEmailHandler,
+  } = useInput((enteredEmail) => enteredEmail.trim().length > 0);
+
+  const {
+    enteredValue: enteredPassword,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    onChangeHandler: changePasswordHandler,
+    onBlurHandler: blurPasswordHandler,
+  } = useInput((enteredPassword) => enteredPassword.trim().length > 0);
+
+  const {
+    enteredValue: enteredRepeatedPassword,
+    isValid: repeatedPasswordIsValid,
+    hasError: repeatedPasswordHasError,
+    onChangeHandler: changeRepeatedPasswordHandler,
+    onBlurHandler: blurRepeatedPasswordHandler,
+  } = useInput(
+    (enteredRepeatedPassword) => enteredRepeatedPassword.trim().length > 0
+  );
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
+    const data = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
   };
 
   return (
@@ -96,36 +125,72 @@ export default function Register() {
                     <Grid item xs={12}>
                       <TextField
                         name="firstName"
-                        required
-                        fullWidth
-                        id="firstName"
                         label="Name"
+                        value={enteredName}
+                        onChange={changeNameHandler}
+                        onBlur={blurNameHandler}
+                        className={`register-form-input ${getInputClasses(
+                          nameIsValid,
+                          nameHasError
+                        )}`}
                         autoFocus
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <TextField fullWidth label="Username" name="username" />
+                      <TextField
+                        label="Username"
+                        name="username"
+                        value={enteredUsername}
+                        onChange={changeUsernameHandler}
+                        onBlur={blurUsernameHandler}
+                        className={`register-form-input ${getInputClasses(
+                          usernameIsValid,
+                          usernameHasError
+                        )}`}
+                      />
                     </Grid>
                     <Grid item xs={12}>
-                      <TextField fullWidth label="Email Address" name="email" />
+                      <TextField
+                        label="Email Address"
+                        name="email"
+                        value={enteredEmail}
+                        onChange={changeEmailHandler}
+                        onBlur={blurEmailHandler}
+                        className={`register-form-input ${getInputClasses(
+                          emailIsValid,
+                          emailHasError
+                        )}`}
+                      />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField fullWidth label="Country" name="country" />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        fullWidth
                         name="password"
                         label="Password"
                         type="password"
+                        value={enteredPassword}
+                        onChange={changePasswordHandler}
+                        onBlur={blurPasswordHandler}
+                        className={`register-form-input ${getInputClasses(
+                          passwordIsValid,
+                          passwordHasError
+                        )}`}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        fullWidth
                         name="confirm-password"
                         label="Confirm password"
                         type="password"
+                        value={enteredRepeatedPassword}
+                        onChange={changeRepeatedPasswordHandler}
+                        onBlur={blurRepeatedPasswordHandler}
+                        className={`register-form-input ${getInputClasses(
+                          repeatedPasswordIsValid,
+                          repeatedPasswordHasError
+                        )}`}
                       />
                     </Grid>
                     <Grid item xs={12}></Grid>
