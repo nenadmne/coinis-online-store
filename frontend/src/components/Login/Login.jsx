@@ -42,11 +42,11 @@ export default function Login() {
     if (enteredUsername.toLowerCase() === "admin") {
       localStorage.setItem("adminToken", adminToken);
       toast.success("Login successful!");
-      return window.location.href=("/admin");
+      return (window.location.href = "/admin");
     } else if (enteredUsername.toLowerCase() === "user") {
       localStorage.setItem("userToken", userToken);
       toast.success("Login successful!");
-      return window.location.href=("/");
+      return (window.location.href = "/");
     } else return;
   };
 
@@ -105,6 +105,7 @@ export default function Login() {
               sx={{ mt: 1 }}
             >
               <TextField
+                fullWidth
                 margin="normal"
                 label="Username"
                 name="username"
@@ -115,6 +116,7 @@ export default function Login() {
                 onBlur={blurUsernameHandler}
               />
               <TextField
+                fullWidth
                 margin="normal"
                 name="password"
                 label="Password"

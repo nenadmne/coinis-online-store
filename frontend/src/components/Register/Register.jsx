@@ -126,6 +126,7 @@ export default function Register() {
                   <Grid container spacing={2}>
                     <Grid className="input-grid" item xs={12}>
                       <TextField
+                        fullWidth
                         name="firstName"
                         label="Name"
                         value={enteredName}
@@ -136,6 +137,7 @@ export default function Register() {
                     </Grid>
                     <Grid className="input-grid" item xs={12}>
                       <TextField
+                        fullWidth
                         label="Username"
                         name="username"
                         value={enteredUsername}
@@ -145,6 +147,7 @@ export default function Register() {
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
+                        fullWidth
                         label="Email Address"
                         name="email"
                         value={enteredEmail}
@@ -157,6 +160,7 @@ export default function Register() {
                     </Grid>
                     <Grid className="input-grid" item xs={12}>
                       <TextField
+                        fullWidth
                         aria-invalid="true"
                         name="password"
                         label="Password"
@@ -168,6 +172,7 @@ export default function Register() {
                     </Grid>
                     <Grid className="input-grid" item xs={12}>
                       <TextField
+                        fullWidth
                         name="confirm-password"
                         label="Confirm password"
                         type="password"
