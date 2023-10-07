@@ -8,18 +8,21 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 1. Install project dependencies using npm:
-npm install
+"npm install"
 
 
 2. Start the development server:
-npm run dev
+"npm run dev"
 
 3. Login Simulation
 For login simulation, you can use the following credentials:
-Username: admin
-Password: [Your chosen password]
-Username: user
-Password: [Your chosen password]
+**Admin Account:**
+- Username: "admin"
+- Password: [Your chosen password]
+
+**User Account:**
+- Username: "user"
+- Password: [Your chosen password]
 
 4. Responsive design Note
 When inspecting responsive design in developer tools, it's important to note that after entering the final dimensions, the page needs to be refreshed. Changes cannot be applied dynamically within the developer tools. Responsive design includes conditions based on window.innerWidth.
