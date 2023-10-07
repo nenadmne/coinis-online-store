@@ -22,11 +22,11 @@ function App() {
         { path: "/details/:slug", element: <ProductDetails /> },
         {
           path: "/profile",
-          element: userToken ? <UserProfile /> : <Homepage />,
+          element: <UserProfile />,
         },
         {
           path: "/admin",
-          element: adminToken ? <Admin /> : <Homepage />,
+          element: <Admin />,
         },
       ],
     },

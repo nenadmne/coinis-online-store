@@ -64,7 +64,6 @@ export default function Register() {
       username: enteredUsername,
       password: enteredPassword,
     };
-    await signUp(data);
   };
 
   return (
