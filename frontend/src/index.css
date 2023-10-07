@@ -27,10 +27,11 @@ html,
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+
 }
 
 body{
+  overflow: hidden;
   overflow-y: auto;
 }
 
