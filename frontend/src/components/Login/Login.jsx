@@ -46,7 +46,7 @@ export default function Login() {
     } else if (enteredUsername.toLowerCase() === "user") {
       localStorage.setItem("userToken", userToken);
       toast.success("Login successful!");
-      return navigate("/");
+      window.location.href=("/");
     } else return;
   };
 
