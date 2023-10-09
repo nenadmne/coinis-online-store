@@ -1,12 +1,9 @@
-import { useState, useEffect, useContext, useRef } from "react";
-import ProductContext from "../../../../store/product-context";
+import { useState, useEffect, useRef } from "react";
 import ProductItem from "./ProductItem/ProductItem";
 import SliderArrows from "./SliderArrows/SliderArrows";
 import "./ImageSlider.css";
 
-const ImageSlider = () => {
-  const prodCtx = useContext(ProductContext);
-  const { products } = prodCtx;
+const ImageSlider = ({ products }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [autoSlideRight, setAutoSlideRight] = useState(true);
   const [itemsPerSlide, setItemsPerSlide] = useState(getItemsPerSlide());
@@ -67,6 +64,7 @@ const ImageSlider = () => {
   }, []);
 
   const imageSliderWrapperRef = useRef(null);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowLeft") {
@@ -126,7 +124,11 @@ const ImageSlider = () => {
     <div className="image-slider-wrapper" ref={imageSliderWrapperRef}>
       <div className="displayed-products">
         {visibleItems.map((item) => (
-          <ProductItem key={item.id} item={item} autoSlideRight={autoSlideRight}/>
+          <ProductItem
+            key={item.id}
+            item={item}
+            autoSlideRight={autoSlideRight}
+          />
         ))}
       </div>
       <SliderArrows
