@@ -20,6 +20,7 @@
 
 @media (min-width: 1024px) {
   .product-details-wrapper {
-    height: calc(100vh - 89px);
+    height: calc(100% - 89px);
+    min-height: fit-content;
   }
 }
