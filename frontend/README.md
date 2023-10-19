@@ -1,28 +1,62 @@
-# React + Vite
+## User Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Follow these steps to set up and run this project on your local machine:
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, make sure you have the following prerequisites installed:
 
-1. Install project dependencies using npm:
-"npm install"
+1. **Node.js:** Download and install the latest version of Node.js from [https://nodejs.org](https://nodejs.org).
 
+### Installation
 
-2. Start the development server:
-"npm run dev"
+1. **Clone this repository** to your local machine using Git:
 
-3. Login Simulation
-For login simulation, you can use the following credentials:
-**Admin Account:**
-- Username: "admin"
-- Password: [Your chosen password]
+   git clone https://github.com/nenadmne/Online-Library.git
 
-**User Account:**
-- Username: "user"
-- Password: [Your chosen password]
+2. **Change to the project directory**:
 
-4. Responsive design Note
-When inspecting responsive design in developer tools, it's important to note that after entering the final dimensions, the page needs to be refreshed. Changes cannot be applied dynamically within the developer tools. Responsive design includes conditions based on window.innerWidth.
+   cd Online-Library
+
+3. **Install project dependencies using npm**:
+
+   npm install
+
+4. **Run the project**:
+
+   npm run dev
+
+### Usage
+
+This project is designed with two distinct user roles: **Admin** and **User**. Each role has specific responsibilities and access privileges.
+
+#### Admin Role
+
+- **Admins** have the highest level of access and control over the system. They can:
+  - Manage (delete) user accounts.
+  - Accept or decline orders from user
+  - Access on products (add/edit/delete functions)
+  - Read customer support tickets
+  - Delete reviews that contain snesitive content
+
+#### User Role
+
+- **Users**:
+  - Add products to cart nad submitting orders
+  - Posting reviews
+
+### Important Note
+
+Please be aware that this project is still under development, and some features may not be fully implemented.
+
+#### Admin Credentials
+
+- Username: admin
+- Password: password
+
+#### Librarian Credentials
+
+- Username: user
+- Password: password
+
+You can use the provided credentials to log in and explore the available features. Keep in mind that this is a testing environment, and changes may occur during the development process.
