@@ -12,11 +12,11 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. **Clone this repository** to your local machine using Git:
 
-   git clone https://github.com/nenadmne/Online-Library.git
+   git clone https://github.com/nenadmne/coinis-online-store.git
 
 2. **Change to the project directory**:
 
-   cd Online-Library
+   cd coinis-online-store
 
 3. **Install project dependencies using npm**:
 
