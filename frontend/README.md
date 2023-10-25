@@ -44,6 +44,7 @@ This project is designed with two distinct user roles: **Admin** and **User**. E
 - **Users**:
   - Add products to cart nad submitting orders
   - Posting reviews
+  - Edit/delete account
 
 ### Important Note
 
